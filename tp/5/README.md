@@ -125,7 +125,7 @@ On parle de `client1.tp5.b1`, `client2.tp5.b1` et `server1.tp5.b1` :
   * déja fait dans le patron
 * [X] Installation de certains paquets réseau
   * déja fait dans le patron
-* [X] **Désactivation de la carte NAT
+* [X] Désactivation de la carte NAT
   * déja fait dans le patron
 * [ ] [Définition des IPs statiques](../../cours/procedures.md#définir-une-ip-statique)
 * [ ] La connexion SSH doit être fonctionnelle
@@ -160,9 +160,9 @@ On parle de toutes les machines :
 Pour tester : 
 * remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) des VMs Linux
 * les deux clients doivent pouvoir `ping server1.tp5.b1`
-* et réciproquement
+* et réciproquement :fire:
 
 > **Notez que les clients/serveurs n'ont pas de route vers `net12`**. Et ui. C'est un réseau privé que seuls les routeurs connaissent. 
 
 # III. DHCP
-Attribuer des IPs statiques et des routes sur les VMs c'est chiant non ? Serveur DHCP à la rescousse.
+Attribuer des IPs statiques et des routes sur les VMs c'est chiant non ? **Serveur DHCP** à la rescousse :sunglasses:. 
