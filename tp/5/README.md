@@ -118,42 +118,51 @@ Lancez toutes les machines (ou une par une). Je vous conseille de vous posez tra
 
 **Prenez des notes de ce que vous faites.**  
 
-**Checklist IP VMs** (on parle de `client1.tp5.b1`, `client2.tp5.b1` et `server1.tp5.b1`) :
+### Checklist IP VMs 
+
+On parle de `client1.tp5.b1`, `client2.tp5.b1` et `server1.tp5.b1` :
 * [X] Désactiver SELinux
   * déja fait dans le patron
 * [X] Installation de certains paquets réseau
   * déja fait dans le patron
-* [X] **Désactivation de la carte NAT**
+* [X] **Désactivation de la carte NAT
   * déja fait dans le patron
 * [ ] [Définition des IPs statiques](../../cours/procedures.md#définir-une-ip-statique)
 * [ ] La connexion SSH doit être fonctionnelle
   * une fois fait, vous avez vos trois fenêtres SSH ouvertes, une dans chaque machine
 * [ ] [Définition du nom de domaine](../../cours/procedures.md#changer-son-nom-de-domaine)
 
-**Checklist IP Routeurs** (on parle de `router1.tp5.b1` et `router2.tp5.b1`):
-* [ ] [Définition des IPs statiques]()
-* [ ] [Définition du nom de domaine]()
+### Checklist IP Routeurs 
 
-**Checklist routes** (on parle de toutes les machines)
+On parle de `router1.tp5.b1` et `router2.tp5.b1` :
+* [ ] [Définition des IPs statiques](../../cours/procedures-cisco.md#définir-une-ip-statique)
+* [ ] [Définition du nom de domaine](../../cours/procedures-cisco.md#changer-son-nom-de-domaine)
+
+### Checklist routes 
+
+On parle de toutes les machines :
 * `router1.tp5.b1`  
   * directement connecté à `net1` et `net12`  
-  * route à ajouter : `net2`  
-* `router2.tp5.b1`  
+  * [route à ajouter](../../cours/procedures-cisco.md#ajouter-une-route-statique) : `net2`  
+* `router2.tp5.b1`
   * directement connecté à `net2` et `net12`  
-  * route à ajouter : `net1`  
+  * [route à ajouter](../../cours/procedures-cisco.md#ajouter-une-route-statique) : `net1`  
 * `server1.tp5.b1`  
   * directement connecté à `net1`  
-  * route à ajouter : `net2`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net2`  
 * `client1.tp5.b1`  
   * directement connecté à `net2`  
-  * route à ajouter : `net1`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
 * `router1.tp5.b1`  
   * directement connecté à `net2`  
-  * route à ajouter : `net1`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
 
 Pour tester : 
-* les deux clients doivent pouvoir ping `server1.tp5.b1`
+* remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) des VMs Linux
+* les deux clients doivent pouvoir `ping server1.tp5.b1`
 * et réciproquement
 
 > **Notez que les clients/serveurs n'ont pas de route vers `net12`**. Et ui. C'est un réseau privé que seuls les routeurs connaissent. 
 
+# III. DHCP
+Attribuer des IPs statiques et des routes sur les VMs c'est chiant non ? Serveur DHCP à la rescousse.
