@@ -141,19 +141,19 @@ On parle de `router1.tp5.b1` et `router2.tp5.b1` :
 ### Checklist routes 
 
 On parle de toutes les machines :
-* `router1.tp5.b1`  
+* [ ] `router1.tp5.b1`  
   * directement connecté à `net1` et `net12`  
   * [route à ajouter](../../cours/procedures-cisco.md#ajouter-une-route-statique) : `net2`  
-* `router2.tp5.b1`
+* [ ] `router2.tp5.b1`
   * directement connecté à `net2` et `net12`  
   * [route à ajouter](../../cours/procedures-cisco.md#ajouter-une-route-statique) : `net1`  
-* `server1.tp5.b1`  
+* [ ] `server1.tp5.b1`  
   * directement connecté à `net1`  
   * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net2`  
-* `client1.tp5.b1`  
+* [ ] `client1.tp5.b1`  
   * directement connecté à `net2`  
   * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
-* `router1.tp5.b1`  
+* [ ] `router1.tp5.b1`  
   * directement connecté à `net2`  
   * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
 
