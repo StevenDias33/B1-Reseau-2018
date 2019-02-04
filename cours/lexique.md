@@ -275,6 +275,10 @@
 
 ## Commandes
 
+### `dhclient` (Linux only)
+* permet de redemander une IP en DHCP
+* utiliser `dhclient -v` pour avoir + d'infos
+
 ### `ipconfig` ou `ifconfig` ou `ip a`
 * affiche des informations sur les carte réseau
 ```

@@ -149,10 +149,16 @@ On parle de toutes les machines :
   * [route à ajouter](../../cours/procedures-cisco.md#ajouter-une-route-statique) : `net1`  
 * [ ] `server1.tp5.b1`  
   * directement connecté à `net1`  
-  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net2`  
-* [ ] `client1.tp5.b1`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net2`
+  * [fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) à remplir : `client1.tp5.b1`, `client2.tp5.b1`
+* [ ] `client1.tp5.b1`
   * directement connecté à `net2`  
-  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`
+  * [fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) à remplir : `server1.tp5.b1`, `client2.tp5.b1`
+* [ ] `client2.tp5.b1`
+  * directement connecté à `net2`  
+  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`
+  * [fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) à remplir : `server1.tp5.b1`, `client1.tp5.b1`
 * [ ] `router1.tp5.b1`  
   * directement connecté à `net2`  
   * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`  
@@ -165,4 +171,44 @@ Pour tester :
 > **Notez que les clients/serveurs n'ont pas de route vers `net12`**. Et ui. C'est un réseau privé que seuls les routeurs connaissent. 
 
 # III. DHCP
-Attribuer des IPs statiques et des routes sur les VMs c'est chiant non ? **Serveur DHCP** à la rescousse :sunglasses:. 
+Attribuer des IPs statiques et des routes sur les VMs c'est chiant non ? **Serveur [DHCP](../../cours/lexique.md#dhcp--dynamic-host-configuration-protocol)** à la rescousse.  
+
+Une section dédiée popera dans le cours d'ici peu.  
+
+Un serveur [DHCP](../../cours/lexique.md#dhcp--dynamic-host-configuration-protocol) :
+* permet d'attribuer dynamiquement des IPs
+  * on a pas besoin de les définir à la main
+* est principalement utilisé pour des [clients](../..//cours/3.md#clientserveur)
+  * on préfère avoir des IPs fixes (statiques) pour les [serveurs](../../cours/3.md#clientserveur) et les équipements réseaux (comme les [routeurs](../../cours/lexique.md#routeur))
+  * ce serait un peu le dawa s'ils changeaient tout le temps
+* permet aussi de distribuer d'autres infos aux [clients](../..//cours/3.md#clientserveur)
+  * comme des routes !
+
+## 1. Mise en place du serveur DHCP
+
+On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources).  
+
+**1. [Renommer la machine](../../cours/procedures.md#changer-son-nom-de-domaine**
+  * pour porter le nom `dhcp-net2.tp5.b1`
+
+**2. Installer le serveur DHCP** en faisant un peu de crasse : 
+  * éteindre la VM dans GNS3
+  * ouvrir VirtualBox
+  * ajouter une carte NAT à la VM
+  * démarrer la VM dans VirtualBox
+  * allumer la carte NAT
+  * `sudo yum install -y dhcp` 
+  * shutdown la VM
+
+**3. Rallumer la VM dans GNS**
+
+**4. Configuration du serveur DHCP**
+* le fichier de configuration se trouve dans `/etc/dhcp/dhcpd.conf`
+  * [un modèle est trouvable ici](./dhcp/dhcpd.conf)
+
+
+**5. Faire un test**
+* avec une nouvelle VM ou `client1.tp5.b1`
+  * configurer l'interface en DHCP
+  * utiliser `dhclient`
+ 
