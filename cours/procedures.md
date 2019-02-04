@@ -11,7 +11,7 @@ Vous trouverez ici quelques mini-procédures pour réaliser certaines opération
 ## Sommaire
 
 * [Définir une IP statique](#définir-une-ip-statique)
-* [Définir une IP statique](#définir-une-ip-dynamique-dhcp)
+* [Définir une IP dynamique](#définir-une-ip-dynamique-dhcp)
 * [Ajouter une route statique](#ajouter-une-route-statique)
 * [Changer son nom de domaine](#changer-son-nom-de-domaine)
 * [Editer le fichier hosts](#editer-le-fichier-hosts)
