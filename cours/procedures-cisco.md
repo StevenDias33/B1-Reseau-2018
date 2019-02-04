@@ -62,11 +62,16 @@ Exemple :
 # conf t
 ```
 
-**2. Ajouter la route**
+**2.1. Ajouter une route vers un réseau**
 ```
 (config)# ip route <NETWORK_ADDRESS> <MASK> <GATEWAY_IP> 
 Exemple : 
 (config)# ip route 10.1.0.0 255.255.255.0 10.2.0.254 
+```
+
+**2.2. Ajouter la route par défaut**
+```
+(config)# ip route 0.0.0.0 0.0.0.0 10.2.0.254 
 ```
 
 **3. Vérifier la route**
