@@ -6,14 +6,11 @@ Vous trouverez ici quelques mini-procédures pour réaliser certaines opération
 
 ## Sommaire
 
-* [Les modes du terminal]()
+* [Les modes du terminal](#les-modes-du-terminal)
 * [Définir une IP statique](#définir-une-ip-statique)
 * [Ajouter une route statique](#ajouter-une-route-statique)
 * [Changer son nom de domaine](#changer-son-nom-de-domaine)
-* [Editer le fichier hosts](#editer-le-fichier-hosts)
-* [Interagir avec le firewall](#interagir-avec-le-firewall)
 * [Gérer sa table ARP](#gérer-sa-table-arp)
-
 
 ---
 
