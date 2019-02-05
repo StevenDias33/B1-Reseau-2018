@@ -61,6 +61,13 @@ Oh et on montera un petit **serveur DHCP** à la fin !
 * [III. DHCP](#iii-dhcp)
 
 # I. Préparation du lab
+
+---
+
+**Pour ce I. il n'y a aucune machine à lancer. Uniquement des VMs/routeurs à préparer. Ce sont les infos préliminaires, avec un tableau récapitulatif à la fin. C'est pour que preniez connaissance et que vous mettiez en place le contexte du TP.**
+
+---
+
 ## 1. Préparation VMs
 
 **1. Création d'un nouveau host-only**
