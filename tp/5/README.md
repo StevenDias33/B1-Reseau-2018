@@ -232,6 +232,8 @@ Le principe du protocole DHCP est le suivant :
   * **dans le bail il y a écrit "j'ai donné telle IP à telle MAC"**
   * comme ça, si le même client revient, il garde son IP
 
+---
+
 La discussion entre le client et le serveur DHCP se fait en 4 messages simples, **"DORA"** :
 * **"Discover"** : du client vers le serveur
   * le client cherche un serveur DHCP en envoyant des Discover en broadcast
