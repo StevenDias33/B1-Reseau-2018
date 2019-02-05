@@ -7,6 +7,7 @@ Vous trouverez ici quelques mini-procédures pour réaliser certaines opération
 ## Sommaire
 
 * [Les modes du terminal](#les-modes-du-terminal)
+* [Garder ses changements après reboot](#garder-les-changements-apres-reboot)
 * [Définir une IP statique](#définir-une-ip-statique)
 * [Ajouter une route statique](#ajouter-une-route-statique)
 * [Changer son nom de domaine](#changer-son-nom-de-domaine)
@@ -53,6 +54,24 @@ Exemple :
 (config)# exit
 # show ip int br
 ```
+---
+
+### Garder les changements après reboot
+Les équipements Cisco possèdent deux configurations (d'une certain façon) :
+* la `running-config`
+  * c'est la conf actuelle
+  * elle contient toutes vos modifications
+  * `# show running-config` pour la voir
+* la `startup-config`
+  * c'est la conf qui est chargée au démarrage de la machine
+  * elle ne contient aucune de vos modifications
+  * `show startup-config`  
+  
+Comment garder vos changements à travers les reboots ? Il faut copier la `running-config` sur la `startup-config` :
+```
+# copy running-config startup-config
+```
+
 ---
 
 ### Ajouter une route statique
