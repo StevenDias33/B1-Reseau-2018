@@ -23,9 +23,9 @@
 # TP 5 - Premier pas dans le monde Cisco
 Cisco c'est un des leaders concernant la construction de matériel lié au réseau. On explorera cette partie un peu plus ensemble en cours.  
 
-Concernant le TP en lui-même, il n'y aura que peu de nouveaux concepts, le but étant de se familiariser un peu avec la ligne de commande Cisco.  
+Concernant le TP en lui-même, il n'y aura que peu de nouveaux concepts, le but étant de se **familiariser un peu avec** la ligne de commande **Cisco**.  
 
-Oh et ptet on montera un petit DHCP à la fin !  
+Oh et on montera un petit **serveur DHCP** à la fin !  
 
 **Encore un TP solo** ! Vous pouvez vous aider entre vous (oui, aidez-vous, vous êtes beaux et forts), **mais un rendu/personne exigé !**
 
@@ -56,20 +56,31 @@ Oh et ptet on montera un petit DHCP à la fin !
 * **utilisez SSH dès que possible**
 
 # Sommaire
-* [Config GNS3]()
-
-# Config GNS3
+* [I. Préparation du lab](#i-préparation-du-lab)
+* [II. Lancement et configuration du lab](#ii-lancement-et-configuration-du-lab)
+* [III. DHCP](#iii-dhcp)
 
 # I. Préparation du lab
 ## 1. Préparation VMs
-On va juste cloner deux VMs du TP précédent :
-* `server1.tp5.b1` est dans `net1` et porte l'IP `10.5.1.10/24`
-* `client1.tp5.b1` est dans `net2` et porte l'IP `10.5.2.10/24`
-* `client2.tp5.b1` est dans `net2` et porte l'IP `10.5.2.11/24`
 
-**Vous clonez juste les VMs, vous ne les allumez pas.**  
+**1. Création d'un nouveau host-only**
+  * peu importe l'adresse on s'en servira juste pour faire du SSH
+  * **activez le DHCP** comme ça on aura pas besoin de saisir les IPs
 
-Ensuite RDV dans GNS3 : Edit > Preferences > VirtualBox VMs et vous ajoutez les deux VMs. 
+**2. Création des VMs**
+* On va juste cloner deux VMs depuis le patron du TP précédent :
+  * `server1.tp5.b1` est dans `net1` et porte l'IP `10.5.1.10/24`
+  * `client1.tp5.b1` est dans `net2` et porte l'IP `10.5.2.10/24`
+  * `client2.tp5.b1` est dans `net2` et porte l'IP `10.5.2.11/24`
+* Ajoutez aux trois VMs une interface host-only **en deuxième carte** dans le host-only précédemment créé
+
+**3. Vous clonez juste les VMs, vous ne les allumez pas.**  
+* Ensuite RDV dans GNS3 : Edit > Preferences > VirtualBox VMs et vous ajoutez les trois VMs. 
+
+**4. Config réseau des dans GNS3** 
+* Sur les 3 VMs 
+  * Clic-droit > Configure > Network
+  * mettre 2 cartes réseau
 
 ## 2. Préparation Routeurs Cisco
 Importez l'ISO du routeur et mettez-en deux dans GNS3 : 
@@ -217,20 +228,20 @@ Le principe du protocole DHCP est le suivant :
 * on a un serveur sur un réseau, il attend que des clients lui demande des IPs
 * des clients peuvent arriver sur le réseau (câble, WiFi, ou autres) et demander une IP
 * le serveur attribuera une IP dans une plage prédéfinie
-* le serveur va créer un "bail DHCP" par client, pour s'en souvenir
-  * dans le bail il y a écrit "j'ai donné telle IP à telle MAC"
+* le serveur va créer un **"bail DHCP"** par client, pour s'en souvenir
+  * **dans le bail il y a écrit "j'ai donné telle IP à telle MAC"**
   * comme ça, si le même client revient, il garde son IP
 
-La discussion entre le client et le serveur DHCP se fait en 4 messages simples, "DORA" :
-* "Discover" : du client vers le serveur
+La discussion entre le client et le serveur DHCP se fait en 4 messages simples, **"DORA"** :
+* **"Discover"** : du client vers le serveur
   * le client cherche un serveur DHCP en envoyant des Discover en broadcast
-* "Offer" : du serveur vers le client
+* **"Offer"** : du serveur vers le client
   * Si un serveur reçoit un "Discover" il peut répondre un "Offer" au client
   * Il propose une IP au client
-* "Request" : du client vers le serveur
+* **"Request"** : du client vers le serveur
   * Permet de demander une IP au serveur
   * C'est celle que le serveur lui a proposé
-* "Acknowledge" : du serveur vers le client
+* **"Acknowledge"** : du serveur vers le client
   * Le serveur attribue l'adresse IP au client
   * Il crée un bail DHCP en local
   * Il peut aussi fournir au client d'autres infos comme l'adresse de gateway
