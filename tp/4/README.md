@@ -4,8 +4,8 @@
 
 * Manipulations IP et masque (avec le [binaire](../../cours/lexique.md#binaire))
 * Notions :
-  * Firewall
-  * Routage (statique)
+  * [Firewall](../../cours/lexique.md#pare-feu-ou-firewall)
+  * [Routage (statique)](../../cours/lexique.md#routeur)
   * IP, Ports, MAC
 * Utilisation de CentOS
   * installation simple
@@ -16,7 +16,7 @@
     * configuration d'[interfaces](../../cours/lexique.md#carte-réseau-ou-interface-réseau)
     * gestion simplifié de nom de domaine
       * hostname, FQDN, fichier `/etc/hosts`
-    * configuration firewall
+    * configuration [firewall](../../cours/lexique.md#pare-feu-ou-firewall)
     * configuration routage statique ([TP 3](../3/README.md))
 
 # TP 4 - Spéléologie réseau : descente dans les couches
