@@ -276,8 +276,10 @@
 ## Commandes
 
 ### `dhclient` (Linux only)
-* permet de redemander une IP en DHCP
-* utiliser `dhclient -v` pour avoir + d'infos
+* permet de demander une IP en DHCP
+* utiliser `dhclient -v` pour avoir + d'infos qu'un simple `dhclient`
+* pour forcer une nouvelle négociation DHCP (nouveau DORA)
+  * `dhclient -v -r` (`r` comme `renew`)
 
 ### `ipconfig` ou `ifconfig` ou `ip a`
 * affiche des informations sur les carte réseau
