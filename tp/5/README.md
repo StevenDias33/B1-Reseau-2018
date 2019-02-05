@@ -9,7 +9,7 @@
   * IP, Ports, MAC
 * Utilisation de CentOS
   * installation simple
-  * utilisation CLI simple (cf [les commandes du Lexique](../../cours/lexique.md#commandes)
+  * utilisation CLI simple (cf [les commandes du Lexique](../../cours/lexique.md#commandes))
     * `man`, `cd`, `ls`, `nano`, `cat`
     * `ip a`, `ping`, `nc`, `traceroute`, `ss`
   * configuration réseau (voir la fiche de [procédures](../../cours/procedures.md))
