@@ -206,9 +206,40 @@ On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources)
 * le fichier de configuration se trouve dans `/etc/dhcp/dhcpd.conf`
   * [un modèle est trouvable ici](./dhcp/dhcpd.conf)
 
-
 **5. Faire un test**
 * avec une nouvelle VM ou `client1.tp5.b1`
-  * configurer l'interface en DHCP
-  * utiliser `dhclient`
- 
+  * [configurer l'interface en DHCP, en dynamique (pas en statique)](../../cours/procedures.md#définir-une-ip-dynamique-dhcp)
+  * utiliser [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
+* dans un cas comme dans l'autre, vous devriez récupérer une IP dans la plage d'IP définie dans `dhcpd.conf`
+
+## 2. Explorer un peu DHCP
+Le principe du protocole DHCP est le suivant : 
+* on a un serveur sur un réseau, il attend que des clients lui demande des IPs
+* des clients peuvent arriver sur le réseau (câble, WiFi, ou autres) et demander une IP
+* le serveur attribuera une IP dans une plage prédéfinie
+* le serveur va créer un "bail DHCP" par client, pour s'en souvenir
+  * dans le bail il y a écrit "j'ai donné telle IP à telle MAC"
+  * comme ça, si le même client revient, il garde son IP
+
+La discussion entre le client et le serveur DHCP se fait en 4 messages simples, "DORA" :
+* "Discover" : du client vers le serveur
+  * le client cherche un serveur DHCP en envoyant des Discover en broadcast
+* "Offer" : du serveur vers le client
+  * Si un serveur reçoit un "Discover" il peut répondre un "Offer" au client
+  * Il propose une IP au client
+* "Request" : du client vers le serveur
+  * Permet de demander une IP au serveur
+  * C'est celle que le serveur lui a proposé
+* "Acknowledge" : du serveur vers le client
+  * Le serveur attribue l'adresse IP au client
+  * Il crée un bail DHCP en local
+  * Il peut aussi fournir au client d'autres infos comme l'adresse de gateway
+
+---
+
+**OKAY**, le but : 
+* faire une demande DHCP
+  * avec [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
+  * capturer avec Wireshark l'échange du DORA
+    * vous pouvez `tcpdump` sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
+    * ou vous pouvez clic-droit sur un lien dans GNS3 et lancer une capture
