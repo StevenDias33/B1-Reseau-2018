@@ -7,7 +7,7 @@ Vous trouverez ici quelques mini-procédures pour réaliser certaines opération
 ## Sommaire
 
 * [Les modes du terminal](#les-modes-du-terminal)
-* [Garder ses changements après reboot](#garder-les-changements-apres-reboot)
+* [Garder ses changements après reboot](#garder-les-changements-après-reboot)
 * [Définir une IP statique](#définir-une-ip-statique)
 * [Ajouter une route statique](#ajouter-une-route-statique)
 * [Changer son nom de domaine](#changer-son-nom-de-domaine)
