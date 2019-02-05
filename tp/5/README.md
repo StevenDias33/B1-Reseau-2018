@@ -68,7 +68,7 @@ Oh et on montera un petit **serveur DHCP** à la fin !
   * **activez le DHCP** comme ça on aura pas besoin de saisir les IPs
 
 **2. Création des VMs**
-* On va juste cloner deux VMs depuis le patron du TP précédent :
+* On va juste cloner trois VMs depuis le patron du TP précédent :
   * `server1.tp5.b1` est dans `net1` et porte l'IP `10.5.1.10/24`
   * `client1.tp5.b1` est dans `net2` et porte l'IP `10.5.2.10/24`
   * `client2.tp5.b1` est dans `net2` et porte l'IP `10.5.2.11/24`
