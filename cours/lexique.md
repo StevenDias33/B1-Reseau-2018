@@ -78,6 +78,8 @@
   * il parle le protocole DHCP, et vos PCs aussi
 * **on oppose "l'adresse par DHCP" (ou "adressage dynamique") à "l'adressage statique"**
   * une "IP statique" ça veut dire "une IP **PAS** récupérée *via* DHCP
+* le [cours 6](./6.md#dhcp) est plus détaillé à ce sujet
+
 
 #### *DNS* : Domain Name System
 * protocole utilisé pour associé des *un nom d'hôte et un nom de domaine* à une adresse IP
@@ -118,6 +120,7 @@
 * elle est *obligatoirement* portée par une *carte réseau*
 * sur une carte physique, elle est gravée sur la carte (on ne peut pas la changer)
 * l'*adresse MAC* est composée de 12 caractères hexadécimaux (par exemple `D4-6D-7D-00-15-3F`)
+* les adresses MAC servent à envoyer des messages directs aux machines sur le même réseau que nous, elles sont utilisées par [le protocole Ethernet](#ethernet)
 
 ### *RFC* : Request For Comments
 * document texte qui définit une notion, un concept, un protocole (principalement utilisés en informatique)
@@ -149,7 +152,14 @@
 * exemple :
   * pour l'adresse IP `192.168.1.37/24`, l'adresse de réseau est `192.168.1.0/24`
 
-### Adresse de diffusion ou *broadcast address*
+#### Pour le [protocole Ethernet](#ethernet)
+
+* dernière MAC "possible" : `ff:ff:ff:ff:ff:ff`
+* elle n'est portée par aucun équipement
+* envoyer une trame Ethernet à cette [adresse MAC](#mac--media-access-control) permet d'envoyer un message à tous les autres équipements sur le réseau où l'on se trouve
+
+#### Pour le [protocole IP](#ip--internet-protocol-v4)
+
 * dernière adresse d'un réseau
 * est utilisée pour envoyer un message à tous les hôtes d'un réseau
 * elle ne peut pas être utilisée comme adresse d'un hôte
