@@ -7,8 +7,8 @@
 ## Encoding
 
 **What ?**  
-L'*encoding* ou *encodage* est le fait d'utilise un *code* pour changer la forme d'un message.  
-Encoder un texte n'est pas une sécurité, et cela ne fait pas partie de la crypto.  
+L'*encoding* ou *encodage* est le fait d'utilise un *code* pour changer la forme d'un message. C'est une opération très peu coûteuse en performances  
+**Encoder un texte n'est pas une sécurité**, et cela ne fait pas partie de la crypto.  
 Obligé de le citer ici, parce qu'il est trop confondu avec le reste. 
 
 **Examples**
@@ -18,9 +18,14 @@ Obligé de le citer ici, parce qu'il est trop confondu avec le reste.
 * hexadécimal (base16)
 * base64 (très utilisé en info pour stocker des petites données)
   * pendant le cours utilisation de `base64` et `base64 -d`
+  * **la base64** n'est **PAS** du chiffrement, m'kay ?
 
 **Why ?**
 Gagner de la place, économiser du trafic réseau, améliorer les performances.
+
+<br><p align="center">
+  <img src="./pic/we-have-base64-encryption.jpg" title="Rot-26">
+</p>
 
 ## Hashing
 
@@ -107,11 +112,16 @@ Il existe deux principaux types de chiffrement :
   * échange de *clés symétriques* par exemple dans `https`
 
 **Examples**
-* [*chiffrement par décalage*](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage)
+* [*chiffrement par décalage*](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage) (appelé juste "ROT" des fois)
   * *symétrique*
   * la clé est le nombre de fois qu'on se décale dans l'alphabet
   * l'algo de chiffrement est le chiffrement par décalage
-  * un cas particulier est connu : avec la clé 13, appelé chiffrement de César
+  * un cas particulier est connu : avec la clé 13, appelé chiffrement de César (*ROT13*)
+
+<br><p align="center">
+  <img src="./pic/rot-26.jpg" title="Rot-26">
+</p>
+
 * *[RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)*
   * *asymétrique*
   * initiales des trois chercheurs qui l'ont mis sur pied
