@@ -12,7 +12,8 @@
 * [Lexique](./lexique.md)
 
 * [Procédures](./procedures.md)
-  * mini-tutos pour CentOS7
+  * [CentOS7](./procedures.md)
+  * [Cisco](./procedures-cisco.md)
   
 
 * [TPs](../tp)
