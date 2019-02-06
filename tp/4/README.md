@@ -189,7 +189,8 @@ On va faire en sorte que notre `client1` puisse joindre `server1`, et vice-versa
 Pour ce faire : 
 1. **sur `router1`** : 
     * activer l'IPv4 Forwarding (= transformer la machine en routeur)
-      * `sudo sysctl -w net.ipv4.conf.all.forwarding=1`
+      * `sudo sysctl -w net.ipv4.conf.all.forwarding=1` (temporaire)
+      * `echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf` (valide après reboot)
     * désactiver le firewall (pour éviter certaines actions non voulues)
       * `sudo systemctl stop firewalld` (temporaire)
       * `sudo systemctl disable firewalld` (permanent)

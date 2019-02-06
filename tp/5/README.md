@@ -61,6 +61,13 @@ Oh et on montera un petit **serveur DHCP** à la fin !
 * [III. DHCP](#iii-dhcp)
 
 # I. Préparation du lab
+
+---
+
+**Pour ce I. il n'y a aucune machine à lancer. Uniquement des VMs/routeurs à préparer. Ce sont les infos préliminaires, avec un tableau récapitulatif à la fin. C'est pour que preniez connaissance et que vous mettiez en place le contexte du TP.**
+
+---
+
 ## 1. Préparation VMs
 
 **1. Création d'un nouveau host-only**
@@ -68,7 +75,7 @@ Oh et on montera un petit **serveur DHCP** à la fin !
   * **activez le DHCP** comme ça on aura pas besoin de saisir les IPs
 
 **2. Création des VMs**
-* On va juste cloner deux VMs depuis le patron du TP précédent :
+* On va juste cloner trois VMs depuis le patron du TP précédent :
   * `server1.tp5.b1` est dans `net1` et porte l'IP `10.5.1.10/24`
   * `client1.tp5.b1` est dans `net2` et porte l'IP `10.5.2.10/24`
   * `client2.tp5.b1` est dans `net2` et porte l'IP `10.5.2.11/24`
