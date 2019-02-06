@@ -1,4 +1,4 @@
-# Cyprot Intro
+# Crypto Intro
 
 * [Encoding (encodage)](#encoding)
 * [Hashing (hachage)](#hashing)
@@ -107,15 +107,41 @@ Il existe deux principaux types de chiffrement :
   * échange de *clés symétriques* par exemple dans `https`
 
 **Examples**
-* *chiffrement par décalage*
+* [*chiffrement par décalage*](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage)
   * *symétrique*
   * la clé est le nombre de fois qu'on se décale dans l'alphabet
   * l'algo de chiffrement est le chiffrement par décalage
   * un cas particulier est connu : avec la clé 13, appelé chiffrement de César
-* *RSA*
+* *[RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)*
   * *asymétrique*
   * initiales des trois chercheurs qui l'ont mis sur pied
   * mais le concept n'avait pas été inventé par eux
+  * générer une paire de clés RSA 
+```
+# Génération de la clé privée (clé de taille 4096 bits)
+openssl genrsa -des3 -out private.pem 4096
+# Génération de la clé publique qui correspond à la clé privée
+openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+```
+
 * *EC*
   * asymétrique
   * pour *Elliptical Curve*
+  * générer une paire de clé EC
+```
+# Clé privée
+openssl ecparam -name secp256k1 -genkey -out priv.pem
+# Clé publique
+openssl ec -in priv.pem -text -noout
+```
+
+<br><p align="center">
+  <img src="./pic/encrypt-all-the-things.png" title="Encrypt all the things !">
+</p>
+
+## S'il y a un prochain cours de crypto...
+* échange DiffieHellman
+* explication de RSA
+  * démo au tableau
+* explication de EC
+* deep-dive dans le protocole TLS (le 's' de `https`)
