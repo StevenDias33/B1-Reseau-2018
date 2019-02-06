@@ -1,8 +1,8 @@
 # Cyprot Intro
 
-* [Encoding (encodage)]()
-* [Hashing (hachage)]()
-* [Encryption (chiffrement)]()
+* [Encoding (encodage)](#encoding)
+* [Hashing (hachage)](#hashing)
+* [Encryption (chiffrement)](#encryption)
 
 ## Encoding
 
