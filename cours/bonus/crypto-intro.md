@@ -6,12 +6,12 @@
 
 ## I. Encoding
 
-### **What ?**  
+### What ?
 L'*encoding* ou *encodage* est le fait d'utilise un *code* pour changer la forme d'un message. C'est une opération très peu coûteuse en performances  
 **Encoder un texte n'est pas une sécurité**, et cela ne fait pas partie de la crypto.  
 Obligé de le citer ici, parce qu'il est trop confondu avec le reste. 
 
-### **Examples**
+### Examples
 * binaire (base2)
 * décimal (base10)
 * octal (base8)
@@ -20,7 +20,7 @@ Obligé de le citer ici, parce qu'il est trop confondu avec le reste.
   * pendant le cours utilisation de `base64` et `base64 -d`
   * **la base64** n'est **PAS** du chiffrement, m'kay ?
 
-### **Why ?**
+### Why ?
 Gagner de la place, économiser du trafic réseau, améliorer les performances.
 
 <br><p align="center">
@@ -29,10 +29,10 @@ Gagner de la place, économiser du trafic réseau, améliorer les performances.
 
 ## II. Hashing
 
-**Vocab**
+### Vocab
 Un *hash* (ou *empreinte* ou *somme de contrôle* ou *checksum*) est le résultat d'un fichier/texte/whatever passé dans une *fonction de hachage*.
 
-**What ?**
+### What ?
 Ce sont des fonction mathématiques qui **doivent** respecter certaines propriétés :
 * une *fonction de hachage* est une **one-way function** : on peut la faire dans un sens, mais pas dans l'autre 
   * tout le monde peut calculer un hash
@@ -42,13 +42,13 @@ Ce sont des fonction mathématiques qui **doivent** respecter certaines proprié
   * une *collision* c'est quand deux entrées différentes donnent le même *hash*
 * un tout petit changement dans le message résulte en une altération totale du ùhash*
 
-**Examples**
+### Examples
 * MD5
   * utilisation de `md5sum` en cours
 * SHA1
 * SHA256
 
-**Why ?**
+### Why ?
 * **stockage de mot de passe**
   * on stocke le hash de l'utilisateur
   * quand il veut se reconnecter
@@ -66,7 +66,7 @@ Ce sont des fonction mathématiques qui **doivent** respecter certaines proprié
 
 ## III. Encryption
 
-**Vocab**
+### Vocab
 L'*encryption* ou *chiffrement* est l'art de transformer un message en un *message chiffré* ou *ciphertext* à l'aide d'une *clé de chiffrement* en utilisant un  *algorithme de chiffrement*.  
 
 On oppose *message chiffré* à *message en clair*.  
@@ -81,7 +81,7 @@ Il existe deux principaux types de chiffrement :
 * "crypter" = chiffrer sans avoir connaissance de l'algo ou de la clé ?...
   * **STRICTEMENT IMPOSSIBLE. PAR DEFINTION.**
 
-**What ?**
+### What ?
 * *chiffrement symétrique* 
   * la clé doit être partagé entre tous les membres d'une communication/d'un échange
   * soit partagée IRL, soit envoyée en clair à travers un réseau
@@ -96,22 +96,22 @@ Il existe deux principaux types de chiffrement :
   * Une qu'elle garde que pour elle et met dans un endroit sécure : n*la clé privée*
   * Une qu'elle donne à tout le monde : *la clé publique*
   * Il est possible de réaliser principalement deux choses :
-  1. **Signature**
-    * Alice chiffre un message avec sa clé privée et l'envoie sur le réseau
-    * tout le monde peut le déchiffrer
-    * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
-    * c'est de la **signature**
-  2. **Echange sécurisé**
-    * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
-    * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
-    * C'est Alice qui l'a : seule Alice pour ouvrir ce message
+    1. **Signature**
+      * Alice chiffre un message avec sa clé privée et l'envoie sur le réseau
+      * tout le monde peut le déchiffrer
+      * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
+      * c'est de la **signature**
+    2. **Echange sécurisé**
+      * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
+      * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
+      * C'est Alice qui l'a : seule Alice pour ouvrir ce message
 
-**Why ?**
+### Why ?
 * Signature de message
 * Echange/Transaction sécurisée
   * échange de *clés symétriques* par exemple dans `https`
 
-**Examples**
+### Examples
 * [*chiffrement par décalage*](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage) (appelé juste "ROT" des fois)
   * *symétrique*
   * la clé est le nombre de fois qu'on se décale dans l'alphabet
