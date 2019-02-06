@@ -102,7 +102,8 @@ Il existe deux principaux types de chiffrement :
   * Alice chiffre un message avec sa clé privée et l'envoie sur le réseau
   * tout le monde peut le déchiffrer
   * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
-  * c'est de la **signature**
+  * c'est de la **signature**  
+  
 **2. Echange sécurisé**
   * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
   * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
