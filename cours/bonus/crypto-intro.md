@@ -95,16 +95,18 @@ Il existe deux principaux types de chiffrement :
   * Un participant (Alice) génère une paire de clés
   * Une qu'elle garde que pour elle et met dans un endroit sécure : n*la clé privée*
   * Une qu'elle donne à tout le monde : *la clé publique*
-  * Il est possible de réaliser principalement deux choses :
-    1. **Signature**
-      * Alice chiffre un message avec sa clé privée et l'envoie sur le réseau
-      * tout le monde peut le déchiffrer
-      * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
-      * c'est de la **signature**
-    2. **Echange sécurisé**
-      * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
-      * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
-      * C'est Alice qui l'a : seule Alice pour ouvrir ce message
+
+* avec le chiffrement asymétrique, il est possible de réaliser principalement deux choses :  
+  
+**1. Signature**
+  * Alice chiffre un message avec sa clé privée et l'envoie sur le réseau
+  * tout le monde peut le déchiffrer
+  * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
+  * c'est de la **signature**
+**2. Echange sécurisé**
+  * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
+  * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
+  * C'est Alice qui l'a : seule Alice pour ouvrir ce message
 
 ### Why ?
 * Signature de message
