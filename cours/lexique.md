@@ -1,13 +1,13 @@
 # Lexique
 
-* [Protocoles](#Protocoles)
+* [Protocoles](#protocoles)
 * [Autres sigles et acronymes](#siglesacronymes)
 * [Notions](#notions)
 * [Commandes](#commandes)
 
 ## Protocoles
-
-### *Ethernet*
+### Couche 2 modèle OSI
+#### *Ethernet*
 * un *message Ethernet* est une **trame Ethernet**
 * utilisé pour la *commutation de paquets*
 * Ethernet définit le format des trames Ethernet qui circulent sur le réseau (entre autres)
@@ -20,16 +20,20 @@
 
 ---
 
-### *ARP* : Adresse Resolution Protocol
+### Couche 2/3 du modèle OSI
+
+#### *ARP* : Adresse Resolution Protocol
 * c'est dans le nom : il permet de résoudre des adresses
 * plus précisément, il **permet de demander sur le réseau la MAC de quelqu'un, quand on connaît son IP**
 * pour plus de détails sur le fonctionnement d'ARP, vous pouvez vous référer [au cours sur le sujet](./5.md#arp)
 
 ---
 
-### *IP* : Internet Protocol v4
+### Couche 3 du modèle OSI
 
-> on parle ici d'IPv4 (on verra peut-êtr eun peu d'IPv6 ensemble)
+#### *IP* : Internet Protocol v4
+
+> on parle ici d'IPv4 (on verra peut-être un peu d'IPv6 ensemble)
 
 * un *message IP* est un **paquet IP**
 * protocole utilisé pour discuter à travers des réseaux
@@ -43,7 +47,9 @@
 
 ---
 
-### *TCP* : Transmission Control Protocol
+### Couche 4 du modèle OSI
+
+#### *TCP* : Transmission Control Protocol
 
 * un *message TCP* est un **datagramme TCP**
 * permet d'établir un tunnel entre deux personnes, généralement un client et un serveur
@@ -52,7 +58,7 @@
 * **on utilise TCP lorsqu'on veut une connexion stable, même si elle est un peu plus lente**
 * une connexion HTTP utilise un tunnel TCP par exemple
 
-### *UDP* : User Datagram Protocol
+#### *UDP* : User Datagram Protocol
 
 * un *message UDP* est un **datagramme UDP**
 * permet d'échanger des données, générélament entre un client et un serveur
@@ -62,7 +68,9 @@
 
 ---
 
-### *DHCP* : Dynamic Host Configuration Protocol
+### Au dessus de 4 (couches "applicatives" qui transportent de la donnée)
+
+#### *DHCP* : Dynamic Host Configuration Protocol
 * permet d'éviter aux gens de définir leur adresse IP à la main eux-mêmes
 * permet donc d'attribuer automatiquement des adresses IPs au sein d'un [LAN](#lan--local-area-network)
 * il existe sur les réseaux pourvus de DHCP, un *serveur DHCP*
@@ -71,17 +79,17 @@
 * **on oppose "l'adresse par DHCP" (ou "adressage dynamique") à "l'adressage statique"**
   * une "IP statique" ça veut dire "une IP **PAS** récupérée *via* DHCP
 
-### *DNS* : Domain Name System
+#### *DNS* : Domain Name System
 * protocole utilisé pour associé des *un nom d'hôte et un nom de domaine* à une adresse IP
 * les *serveurs DNS* sont des serveurs à qui on peut poser des questions
   * "donne moi le nom de domaine associé à telle IP"
   * "donne moi l'IP associée à tel nom de domaine"
 * des outils comme [`nslookup` ou `dig`](#nslookup-ou-dig) peuvent être utilisés pour interroger des serveurs DNS à la main
 
-### *HTTP* : HyperText Transfer Protocol
+#### *HTTP* : HyperText Transfer Protocol
 * protocole utilisé pour discuter avec des serveurs web
 
-### *SSH* : Secure SHell
+#### *SSH* : Secure SHell
 * protocole/outil utilisés pour se connecter à distance sur un équipement
 * on peut alors contrôler l'équipement en passant par le réseau
   * l'équipement distant doit faire tourner une application : un **serveur SSH** 
