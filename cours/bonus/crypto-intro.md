@@ -1,17 +1,17 @@
 # Crypto Intro
 
-* [Encoding (encodage)](#encoding)
-* [Hashing (hachage)](#hashing)
-* [Encryption (chiffrement)](#encryption)
+* [I. Encoding (encodage)](#i-encoding)
+* [II. Hashing (hachage)](#ii-hashing)
+* [III. Encryption (chiffrement)](#iii-encryption)
 
-## Encoding
+## I. Encoding
 
-**What ?**  
+### **What ?**  
 L'*encoding* ou *encodage* est le fait d'utilise un *code* pour changer la forme d'un message. C'est une opération très peu coûteuse en performances  
 **Encoder un texte n'est pas une sécurité**, et cela ne fait pas partie de la crypto.  
 Obligé de le citer ici, parce qu'il est trop confondu avec le reste. 
 
-**Examples**
+### **Examples**
 * binaire (base2)
 * décimal (base10)
 * octal (base8)
@@ -20,14 +20,14 @@ Obligé de le citer ici, parce qu'il est trop confondu avec le reste.
   * pendant le cours utilisation de `base64` et `base64 -d`
   * **la base64** n'est **PAS** du chiffrement, m'kay ?
 
-**Why ?**
+### **Why ?**
 Gagner de la place, économiser du trafic réseau, améliorer les performances.
 
 <br><p align="center">
   <img src="./pic/we-have-base64-encryption.jpg" title="Rot-26">
 </p>
 
-## Hashing
+## II. Hashing
 
 **Vocab**
 Un *hash* (ou *empreinte* ou *somme de contrôle* ou *checksum*) est le résultat d'un fichier/texte/whatever passé dans une *fonction de hachage*.
@@ -64,7 +64,7 @@ Ce sont des fonction mathématiques qui **doivent** respecter certaines proprié
 * **plein d'autres choses**
   * vérification de l'identité d'un serveur SSH
 
-## Encryption
+## III. Encryption
 
 **Vocab**
 L'*encryption* ou *chiffrement* est l'art de transformer un message en un *message chiffré* ou *ciphertext* à l'aide d'une *clé de chiffrement* en utilisant un  *algorithme de chiffrement*.  
