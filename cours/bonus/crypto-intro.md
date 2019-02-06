@@ -93,7 +93,7 @@ Il existe deux principaux types de chiffrement :
 
 * utilisation du *chiffrement asymétrique*
   * Un participant (Alice) génère une paire de clés
-  * Une qu'elle garde que pour elle et met dans un endroit sécure : n*la clé privée*
+  * Une qu'elle garde que pour elle et met dans un endroit sécure : *la clé privée*
   * Une qu'elle donne à tout le monde : *la clé publique*
 
 * avec le chiffrement asymétrique, il est possible de réaliser principalement deux choses :  
@@ -103,7 +103,7 @@ Il existe deux principaux types de chiffrement :
   * tout le monde peut le déchiffrer
   * mais si le déchiffrement marche, alors on est sûrs qu'Alice a envoyé le message
   * c'est de la **signature**  
-  
+
 **2. Echange sécurisé**
   * N'importe qui en possession de la *clé publique* de Alice, par exemple Bob, chiffre un message avec
   * Personne ne pourra ouvrir ce message sauf le détenteur de l'autre *clé*, qui est la *clé privée*
