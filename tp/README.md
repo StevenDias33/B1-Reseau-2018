@@ -5,6 +5,7 @@ Ce dossier contient les TPs :
 * [TP2](./2) : manipulations autour du réseau sur les postes clients
 * [TP3](./3) : routage statique avec machines hôtes et VM CentOS 7
 * [TP4](./4) : spéléologie réseau, ARP, exploration du réseau avec Wireshark
+* [TP5](./5) : premier pas dans le monde Cisco (& DHCP for fun)
 
 # Rendu de TP
 
