@@ -11,7 +11,7 @@
 
 * [Lexique](./lexique.md)
 
-* [Procédures](./procedures.md)
+* Procédures
   * [CentOS7](./procedures.md)
   * [Cisco](./procedures-cisco.md)
   
