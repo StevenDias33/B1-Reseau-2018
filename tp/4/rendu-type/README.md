@@ -286,13 +286,28 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
 64 bytes from server1 (10.2.0.10): icmp_seq=4 ttl=63 time=2.21 ms
 ```
 
-* fichier de capture `ping.pcap` au TP
-
 * sur cette capture, on voit `client1` et `router1` discuter
   * en effet, on ne capture le trafic que sur une seule interface du routeur
   * donc on ne voit que les trames qui passent par cette interface
   * on manque ainsi la moitié du trafic : celui entre `router1` et `server1` (l'autre interface du routeur)
- 
+  * il en sera de même sur toutes les autres captures
+
+* explication de l'échange
+
+<p align="center">
+  <img src="./screens/wireshark-ping.png" title="Fichier './pcap/ping.pcap' ouvert dans Wireshark">
+</p>
+
+**1. ARP Broadcast et Reply**
+  * trame n°1 : `client1` demande la MAC de la passerelle (c'est `router1`)
+  * trame n°2 : `router1` répond à `client1` en indiquant sa MAC
+
+**2. Echange de ping/pong**
+  * alternativement on observe les ping et pong entre `client1` et `server1`
+  * le protocole utilisé par `ping` est ICMP
+  * la MAC de destination de tous les messages ICMP envoyé par `client1` est celle de `router1`
+    * car tous les messages passent par `router1` avant d'arriver à `server1`
+
 #### B. `netcat`
 
 * préparation sur `server1`
@@ -321,6 +336,38 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
 0 packets dropped by kernel
 ```
 
+* [fichier de capture `netcat.pcap` au TP](./pcap/netcat.pcap)
+
+* explication de l'échange
+
+<p align="center">
+  <img src="./screens/wireshark-netcat.png" title="Fichier './pcap/netcat.pcap' ouvert dans Wireshark">
+</p>
+
+**1. ARP Broadcast et ARP Reply**
+  * trame n°1 : `client1` demande la MAC de la passerelle (c'est `router1`)
+  * trame n°2 : `router1` répond à `client1` en indiquant sa MAC
+
+**2. c'est le 3-way handshake au niveau TCP (pareil que pour `netcat`)**
+  * le trafic HTTP a besoin d'une connexion TCP
+  * trame n°3 : `SYN` : `client1` demande une connexion au serveur
+  * trame n°4 : `SYN, ACK` : `server1` accepte et valide la connexion
+  * trame n°5 : `ACK` : le client valide la connexion
+
+**3. C'est la donnée envoyée par client vers serveur**
+  * trame n°6 : donnée envoyée par `client1`
+  * trame n°7 : `server1` valide la donnée reçu (accusé de réception)
+  * j'ai juste envoyé "hello"
+
+**3. C'est la donnée envoyée par `server1` vers le client**
+  * trame n°8 : donnée envoyée par `server1`
+  * trame n°9 : `client1` valide la donnée reçu (accusé de réception)
+  * j'ai juste envoyé "hi"
+
+**5. `client1` et `server1` quittent la connexion**
+  * `client1` et `server1` échange des `FIN,ACK` -> `ACK` pour terminer la connexion
+
+
 #### C. `HTTP`
 
 * sur `server1`
@@ -344,6 +391,36 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
 0 packets dropped by kernel
 ```
 
-* on peut voir le même 3-way handshake au niveau TCP ue pour `netcat`
+* [fichier de capture `http.pcap` au TP](./pcap/http.pcap)  
 
-* on peut aussi voir l'HTML du site qui passe
+* explication de l'échange :
+
+<p align="center">
+  <img src="./screens/wireshark-http.png" title="Fichier './pcap/http.pcap' ouvert dans Wireshark">
+</p>
+
+
+**1. ARP Broadcast et ARP Reply**
+  * trame n°1 : `client1` demande la MAC de la passerelle (c'est `router1`)
+  * trame n°2 : `router1` répond à `client1` en indiquant sa MAC
+
+**2. c'est le 3-way handshake au niveau TCP (pareil que pour `netcat`)**
+  * le trafic HTTP a besoin d'une connexion TCP
+  * trame n°3 : `SYN` : le client demande une connexion au serveur
+  * trame n°4 : `SYN, ACK` : le serveur accepte et valide la connexion
+  * trame n°5 : `ACK` : le client valide la connexion
+
+**3. C'est la requête HTTP du client**
+  * trame n°6 : requête HTTP du client
+  * il demande la page qui se trouve à `/`
+  * par défaut ce sera le `index.html` qui lui sera retourné
+
+**4. Réponse HTTP du serveur**
+  * trame n°9 : réponse HTTP du serveur
+  * il répond une trame qui contient le `index.html`
+  * le code `HTTP 200` signifie que la requête s'est bien passée
+
+**5. Le client quitte la connexion**
+  * trame n°12 : `FIN,ACK` : le client demande à terminer la connexion
+  * trame n°13 : `FIN,ACK` : le serveur valide la fermeture de la connexion
+  * trame n°14 : `ACK` : le client valide la fermeture de la connexion
