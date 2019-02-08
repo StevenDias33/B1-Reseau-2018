@@ -1,6 +1,6 @@
 # TP4 - Correction - Spéléologie Réseau
 
-## I. Mise en place du lab
+# I. Mise en place du lab
 
 La mise en place du lab est entièrement automatisée grâce à Vagrant :
 
@@ -127,11 +127,11 @@ Machine | `net1` | `net2`
 `server1.tp4` | X | **`10.2.0.10`** / `08:00:27:85:65:4a` 
 
 
-## II. Spéléo réso
+# II. Spéléo réso
 
-### 1. ARP
+## 1. ARP
 
-#### Manip 1
+### Manip 1
 
 * sur `client1`
 ```bash
@@ -171,7 +171,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * avec un coup d'oeil à notre tableau du dessus, on s'aperçoit que c'est bien la MAC de `router1` qui vient d'apparaître
   * pour discuter avec `server1`, notre client passe par le routeur et doit donc connaître sa MAC
 
-#### Manip 2
+### Manip 2
 
 * sur `router1`
 
@@ -205,7 +205,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * il a du effectuer un ARP broadcast pour cela
   * car seule la MAC des machines leur permet de discuter
 
-#### Manip 3
+### Manip 3
 
 * **GNU/Linux**
 ```bash
@@ -284,12 +284,11 @@ default via 192.168.1.1 dev wlo1 proto dhcp metric 600
 
 > on voit aussi bien les deux réseaux vbox :)
 
-#### Manip 4
+### Manip 4
 
+## 2. Wireshark
 
-### 2. Wireshark
-
-#### A. `ping`
+### A. `ping`
 
 * sur `router1`
 
@@ -336,7 +335,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * la MAC de destination de tous les messages ICMP envoyé par `client1` est celle de `router1`
     * car tous les messages passent par `router1` avant d'arriver à `server1`
 
-#### B. `netcat`
+### B. `netcat`
 
 * préparation sur `server1`
 ```bash
@@ -396,7 +395,7 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
   * `client1` et `server1` échange des `FIN,ACK` -> `ACK` pour terminer la connexion
 
 
-#### C. `HTTP`
+### C. `HTTP`
 
 * sur `server1`
 ```
