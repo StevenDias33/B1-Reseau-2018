@@ -14,9 +14,9 @@
 
 # I. Mise en place du lab
 
-La mise en place du lab est entièrement automatisée grâce à Vagrant :
+La mise en place du lab est entièrement automatisée grâce à Vagrant (cf. le [Vagrantfile](./Vagrantfile)). Si vous voulez mettre en place Vagrant sur votre machine, référez-vous [à cette page du cours](../../../cours/bonus/vagrant-setup.md).
 
-* Liste des machines actives :  
+* **Liste des machines actives** 
 
 ```bash
 [it4@it4 tp4]$ vagrant status
@@ -26,7 +26,7 @@ client1                   running (virtualbox)
 server1                   running (virtualbox)
 ```
 
-* Etat de `client1.tp4.b1` :
+* **Etat de `client1.tp4.b1`**
 
 ```bash
 [it4@it4 tp4]$ vagrant ssh client1
@@ -62,7 +62,7 @@ traceroute to server1.tp4.b1 (10.2.0.10), 30 hops max, 60 byte packets
 
 ```
 
-* Etat de `server1.tp4.b1`
+* **Etat de `server1.tp4.b1`**
 
 ```bash
 [it4@it4 tp4]$ vagrant ssh server1
@@ -98,7 +98,7 @@ traceroute to client1.tp4.b1 (10.1.0.10), 30 hops max, 60 byte packets
  2  client1 (10.1.0.10)  1.504 ms  1.448 ms  1.361 ms
 ```
 
-* Etat de `router1.tp4.b1`
+* **Etat de `router1.tp4.b1`**
 
 ```bash
 [it4@it4 tp4]$ vagrant ssh router1
