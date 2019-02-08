@@ -118,6 +118,8 @@ default via 10.0.2.2 dev eth0 proto dhcp metric 100
 10.2.0.0/24 dev eth2 proto kernel scope link src 10.2.0.254 metric 102 
 ```
 
+---
+
 **Tableau récapitulatif :**
 
 Machine | `net1` | `net2`
@@ -126,11 +128,10 @@ Machine | `net1` | `net2`
 `router1.tp4` | **`10.1.0.254`** / `08:00:27:a2:40:3d` | **`10.2.0.254`** / `08:00:27:b2:bc:8e`
 `server1.tp4` | X | **`10.2.0.10`** / `08:00:27:85:65:4a` 
 
+---
 
 # II. Spéléo réso
-
 ## 1. ARP
-
 ### Manip 1
 
 * sur `client1`
@@ -171,6 +172,8 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * **avec un coup d'oeil à notre tableau du dessus, on s'aperçoit que c'est bien la MAC de `router1` qui vient d'apparaître**
   * pour discuter avec `server1`, notre client passe par le routeur et doit donc connaître sa MAC
 
+---
+
 ### Manip 2
 
 * sur `router1`
@@ -204,6 +207,8 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
 * **notre routeur a enregistré les MAC de `server1` et `client1`**
   * il a du effectuer un ARP broadcast pour cela
   * car seule la MAC des machines leur permet de discuter
+
+---
 
 ### Manip 3
 
@@ -283,6 +288,8 @@ default via 192.168.1.1 dev wlo1 proto dhcp metric 600
 ```
 
 > on voit aussi bien les deux réseaux vbox :)
+
+---
 
 ### Manip 4
 
