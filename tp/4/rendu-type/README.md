@@ -168,7 +168,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
 ```
 
 * une nouvelle ligne est apparue : `10.1.0.254 dev eth1 lladdr 08:00:27:a2:40:3d REACHABLE`
-  * avec un coup d'oeil à notre tableau du dessus, on s'aperçoit que c'est bien la MAC de `router1` qui vient d'apparaître
+  * **avec un coup d'oeil à notre tableau du dessus, on s'aperçoit que c'est bien la MAC de `router1` qui vient d'apparaître**
   * pour discuter avec `server1`, notre client passe par le routeur et doit donc connaître sa MAC
 
 ### Manip 2
@@ -201,7 +201,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
 10.0.2.2 dev eth0 lladdr 52:54:00:12:35:02 REACHABLE
 ```
 
-* notre routeur a enregistré les MAC de `server1` et `client1`
+* **notre routeur a enregistré les MAC de `server1` et `client1`**
   * il a du effectuer un ARP broadcast pour cela
   * car seule la MAC des machines leur permet de discuter
 
@@ -269,7 +269,7 @@ Interface : 192.168.1.29 --- 0x9
   224.0.0.22            01-00-5e-00-00-16     statique
 ```
 
-* c'est la passerelle de mon réseau WiFI (la box de chez moi) qui est revenue
+* **c'est la passerelle de mon réseau WiFI (la box de chez moi) qui est revenue**
   * notre PC effectue régulièrement des requêtes broadcast vers ses passerelles par défaut
   * pour vérifier que c'est bien ma passerelle par défaut (sur mon Linux):
 
@@ -285,6 +285,28 @@ default via 192.168.1.1 dev wlo1 proto dhcp metric 600
 > on voit aussi bien les deux réseaux vbox :)
 
 ### Manip 4
+
+* sur `client1`
+
+```bash
+[vagrant@client1 ~]$ ip neigh flush all
+[vagrant@client1 ~]$ ip neigh show
+
+# Allumage de la carte NAT
+[vagrant@client1 ~]$ ifup eth2
+
+[vagrant@client1 ~]$ curl -L google.com
+# Shit load of html
+
+[vagrant@client1 ~]$ ip neigh show
+10.0.2.2 dev enp0s3 lladdr 52:54:00:12:35:02 REACHABLE
+```
+
+* la nouvelle entrée dans la table ARP correspond à la machine qui nous a permis d'aller sur internet (sur `google.com`)
+  * **c'est donc forcément notre machine hôte qui porte cette IP**
+  * c'est ce que fait le NAT de VirtualBox : il permet à la VM de passer par l'hôte pour aller sur internet
+
+---
 
 ## 2. Wireshark
 
@@ -319,6 +341,8 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * on manque ainsi la moitié du trafic : celui entre `router1` et `server1` (l'autre interface du routeur)
   * il en sera de même sur toutes les autres captures
 
+---
+
 * explication de l'échange
 
 <p align="center">
@@ -334,6 +358,8 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
   * le protocole utilisé par `ping` est ICMP
   * la MAC de destination de tous les messages ICMP envoyé par `client1` est celle de `router1`
     * car tous les messages passent par `router1` avant d'arriver à `server1`
+
+---
 
 ### B. `netcat`
 
@@ -362,6 +388,8 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
 13 packets received by filter
 0 packets dropped by kernel
 ```
+
+---
 
 * [fichier de capture `netcat.pcap` au TP](./pcap/netcat.pcap)
 
@@ -394,6 +422,7 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
 **5. `client1` et `server1` quittent la connexion**
   * `client1` et `server1` échange des `FIN,ACK` -> `ACK` pour terminer la connexion
 
+---
 
 ### C. `HTTP`
 
@@ -417,6 +446,8 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
 14 packets received by filter
 0 packets dropped by kernel
 ```
+
+---
 
 * [fichier de capture `http.pcap` au TP](./pcap/http.pcap)  
 
@@ -451,3 +482,7 @@ tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 byt
   * trame n°12 : `FIN,ACK` : le client demande à terminer la connexion
   * trame n°13 : `FIN,ACK` : le serveur valide la fermeture de la connexion
   * trame n°14 : `ACK` : le client valide la fermeture de la connexion
+
+---
+
+:fire: :fire: :fire:
