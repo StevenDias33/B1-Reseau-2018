@@ -124,8 +124,6 @@ Last login: Fri Feb  8 13:45:46 2019 from 10.0.2.2
 10.0.2.3 dev eth0 lladdr 52:54:00:12:35:03 STALE
 
 [vagrant@router1 ~]$ ip r s
-default via 10.0.2.2 dev eth0 proto dhcp metric 100 
-10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 100 
 10.1.0.0/24 dev eth1 proto kernel scope link src 10.1.0.254 metric 101 
 10.2.0.0/24 dev eth2 proto kernel scope link src 10.2.0.254 metric 102 
 ```
