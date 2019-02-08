@@ -103,6 +103,7 @@ traceroute to client1.tp4.b1 (10.1.0.10), 30 hops max, 60 byte packets
 ```bash
 [it4@it4 tp4]$ vagrant ssh router1
 Last login: Fri Feb  8 13:45:46 2019 from 10.0.2.2
+
 [vagrant@router1 ~]$ ip a
 3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:a2:40:3d brd ff:ff:ff:ff:ff:ff
