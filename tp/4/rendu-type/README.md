@@ -92,18 +92,6 @@ traceroute to client1.tp4.b1 (10.1.0.10), 30 hops max, 60 byte packets
 [it4@it4 tp4]$ vagrant ssh router1
 Last login: Fri Feb  8 13:45:46 2019 from 10.0.2.2
 [vagrant@router1 ~]$ ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 52:54:00:75:dc:3d brd ff:ff:ff:ff:ff:ff
-    inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic eth0
-       valid_lft 85413sec preferred_lft 85413sec
-    inet6 fe80::5054:ff:fe75:dc3d/64 scope link 
-       valid_lft forever preferred_lft forever
 3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:a2:40:3d brd ff:ff:ff:ff:ff:ff
     inet 10.1.0.254/24 brd 10.1.0.255 scope global noprefixroute eth1
@@ -116,11 +104,13 @@ Last login: Fri Feb  8 13:45:46 2019 from 10.0.2.2
        valid_lft forever preferred_lft forever
     inet6 fe80::a00:27ff:feb2:bc8e/64 scope link 
        valid_lft forever preferred_lft forever
+
 [vagrant@router1 ~]$ ip n s
 10.2.0.10 dev eth2 lladdr 08:00:27:85:65:4a STALE
 10.1.0.10 dev eth1 lladdr 08:00:27:a5:94:27 STALE
 10.0.2.2 dev eth0 lladdr 52:54:00:12:35:02 REACHABLE
 10.0.2.3 dev eth0 lladdr 52:54:00:12:35:03 STALE
+
 [vagrant@router1 ~]$ ip r s
 default via 10.0.2.2 dev eth0 proto dhcp metric 100 
 10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 100 
