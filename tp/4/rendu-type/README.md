@@ -118,7 +118,7 @@ default via 10.0.2.2 dev eth0 proto dhcp metric 100
 10.2.0.0/24 dev eth2 proto kernel scope link src 10.2.0.254 metric 102 
 ```
 
-Tableau récapitulatif :
+**Tableau récapitulatif :**
 
 Machine | `net1` | `net2`
 --- | --- | ---
@@ -207,7 +207,7 @@ PING server1 (10.2.0.10) 56(84) bytes of data.
 
 #### Manip 3
 
-* GNU/Linux
+* **GNU/Linux**
 ```bash
 [it4@it4 ~]$ date
 Fri Feb  8 15:02:28 CET 2019
@@ -232,9 +232,47 @@ Fri Feb  8 15:02:44 CET 2019
 192.168.1.1 dev wlo1 lladdr 78:94:b4:de:fd:c4 REACHABLE
 ```
 
+* **Windows**
+```
+PS C:\WINDOWS\system32> date
+vendredi 8 février 2019 16:04:11
+
+PS C:\WINDOWS\system32> arp -a
+Interface : 192.168.1.29 --- 0x9
+  Adresse Internet      Adresse physique      Type
+  192.168.1.1           78-94-b4-de-fd-c4     dynamique
+  224.0.0.22            01-00-5e-00-00-16     statique
+
+PS C:\WINDOWS\system32> netsh interface ip delete arpcache
+Ok.
+
+PS C:\WINDOWS\system32> arp -a
+Interface : 192.168.1.29 --- 0x9
+  Adresse Internet      Adresse physique      Type
+  224.0.0.22            01-00-5e-00-00-16     statique
+
+PS C:\WINDOWS\system32> date
+vendredi 8 février 2019 16:04:25
+
+PS C:\WINDOWS\system32> arp -a
+Interface : 192.168.1.29 --- 0x9
+  Adresse Internet      Adresse physique      Type
+  224.0.0.22            01-00-5e-00-00-16     statique
+
+PS C:\WINDOWS\system32> date
+vendredi 8 février 2019 16:04:29
+
+PS C:\WINDOWS\system32> arp -a
+Interface : 192.168.1.29 --- 0x9
+  Adresse Internet      Adresse physique      Type
+  192.168.1.1           78-94-b4-de-fd-c4     dynamique
+  224.0.0.22            01-00-5e-00-00-16     statique
+```
+
 * c'est la passerelle de mon réseau WiFI (la box de chez moi) qui est revenue
   * notre PC effectue régulièrement des requêtes broadcast vers ses passerelles par défaut
-  * pour vérifier que c'est bien ma passerelle par défaut :
+  * pour vérifier que c'est bien ma passerelle par défaut (sur mon Linux):
+
 ```bash
 [it4@it4 ~]$ ip route show
 default via 192.168.1.1 dev wlo1 proto dhcp metric 600 
@@ -245,7 +283,6 @@ default via 192.168.1.1 dev wlo1 proto dhcp metric 600
 ```
 
 > on voit aussi bien les deux réseaux vbox :)
-
 
 #### Manip 4
 
