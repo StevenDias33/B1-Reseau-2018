@@ -152,7 +152,7 @@
 * exemple :
   * pour l'adresse IP `192.168.1.37/24`, l'adresse de réseau est `192.168.1.0/24`
 
-### Adresse de diffusion (ou broadcast address)
+### Adresse de diffusion (ou *broadcast address*)
 
 #### Pour le [protocole Ethernet](#ethernet)
 
