@@ -206,13 +206,13 @@ Un serveur [DHCP](../../cours/lexique.md#dhcp--dynamic-host-configuration-protoc
 
 On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources).  
 
-**1. [Renommer la machine](../../cours/procedures.md#changer-son-nom-de-domaine**)
+**1. [Renommer la machine](../../cours/procedures.md#changer-son-nom-de-domaine)**
   * pour porter le nom `dhcp-net2.tp5.b1`
 
 **2. Installer le serveur DHCP** en faisant un peu de crasse : 
   * éteindre la VM dans GNS3
   * ouvrir VirtualBox
-  * ajouter une carte NAT à la VM
+  * ajouter une troisième carte en NAT à la VM
   * démarrer la VM dans VirtualBox
   * allumer la carte NAT
   * `sudo yum install -y dhcp` 
