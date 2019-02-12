@@ -219,9 +219,14 @@ On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources)
 
 **4. Configuration du serveur DHCP**
 * le fichier de configuration se trouve dans `/etc/dhcp/dhcpd.conf`
-  * [un modèle est trouvable ici](./dhcp/dhcpd.conf)
+  * modifier le, et copier le contenu du [modèle](./dhcp/dhcpd.conf) dedans
 
-**5. Faire un test**
+**5. Démarrer le serveur DHCP**
+* `sudo systemctl start dhcpd`
+* en cas d'erreur, mp moi
+* s'il se passe rien, c'est bon (`systemctl status dhcpd` pour vérifier)
+
+**6. Faire un test**
 * avec une nouvelle VM ou `client1.tp5.b1`
   * [configurer l'interface en DHCP, en dynamique (pas en statique)](../../cours/procedures.md#définir-une-ip-dynamique-dhcp)
   * utiliser [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
@@ -263,7 +268,7 @@ La discussion entre le client et le serveur DHCP se fait en 4 messages simples, 
 
 ---
 
-### IV. Bonus
+### IV. Bonus (mais compté dans les points les copains)
 Parce qu'en vrai, si vous aviez bien bossé, ça va être vite plié tout ça nan ?  
 
 For fun and profit : 
