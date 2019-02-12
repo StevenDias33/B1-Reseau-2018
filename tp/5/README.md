@@ -263,3 +263,18 @@ La discussion entre le client et le serveur DHCP se fait en 4 messages simples, 
   * capturer avec Wireshark l'échange du DORA
     * vous pouvez `tcpdump` sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
     * ou vous pouvez clic-droit sur un lien dans GNS3 et lancer une capture
+
+### IV. Bonus
+Parce qu'en vrai, sivous aviez bien bossé, ça va être vite plié tout ça nan ?  
+
+For fun and profit : 
+* installer un serveur web très simplement configuré (par défaut ?) sur le `server1`
+  * se référer à la fin du [tp4](../4/README.md)
+  * accéder à ce serveur depuis le client (avec `curl`)
+* sécuriser la connexion SSH en forçant la connexion par échange de clés
+  * ça se fait en quelques commandes très très facilement
+  * cherchez un peu en ligne
+* mettre en place le petit nuage "NAT" dans GNS3
+  * cela peut permettre aux VMs d'accéder à Internet 
+  * c'est l'un de vos routeurs qui devra être configuré pour faire du NAT
+  * on a encore rien fait à ce sujet en cours alor gl & hf pour ceux qui veulent le faire
