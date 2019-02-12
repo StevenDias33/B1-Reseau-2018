@@ -297,9 +297,10 @@
 
 ### `dhclient` (Linux only)
 * permet de demander une IP en DHCP
-* utiliser `dhclient -v` pour avoir + d'infos qu'un simple `dhclient`
-* pour forcer une nouvelle négociation DHCP (nouveau DORA)
-  * `dhclient -v -r` (`r` comme `renew`)
+* pour lâcher votre bail DHCP (`DHCPRELEASE`)
+  * `sudo dhclient -v -r` (`r` comme `renew`)
+* pour redemander une IP ([DORA](../../cours/6.md#dhcp))
+  * `sudo dhclient -v`
 
 ### `ipconfig` ou `ifconfig` ou `ip a`
 * affiche des informations sur les carte réseau
