@@ -83,8 +83,8 @@ Comment garder vos changements à travers les reboots ? Il faut copier la `runni
 
 **2.1. Ajouter une route vers un réseau**
 ```
-(config)# ip route <NETWORK_ADDRESS> <MASK> <GATEWAY_IP> 
-Exemple : 
+(config)# ip route <REMORE_NETWORK_ADDRESS> <MASK> <GATEWAY_IP> 
+Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la passerelle 10.2.0.254
 (config)# ip route 10.1.0.0 255.255.255.0 10.2.0.254 
 ```
 
