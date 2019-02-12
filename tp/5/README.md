@@ -264,8 +264,10 @@ La discussion entre le client et le serveur DHCP se fait en 4 messages simples, 
     * vous pouvez `tcpdump` sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
     * ou vous pouvez clic-droit sur un lien dans GNS3 et lancer une capture
 
+---
+
 ### IV. Bonus
-Parce qu'en vrai, sivous aviez bien bossé, ça va être vite plié tout ça nan ?  
+Parce qu'en vrai, si vous aviez bien bossé, ça va être vite plié tout ça nan ?  
 
 For fun and profit : 
 * installer un serveur web très simplement configuré (par défaut ?) sur le `server1`
