@@ -177,9 +177,6 @@ On parle de toutes les machines :
   * directement connecté à `net2`  
   * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net1`
   * [fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) à remplir : `server1.tp5.b1`, `client1.tp5.b1`
-* [ ] `router1.tp5.b1`  
-  * directement connecté à `net1`  
-  * [route à ajouter](../../cours/procedures.md#ajouter-une-route-statique) : `net2`  
 
 Pour tester : 
 * remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) des VMs Linux
