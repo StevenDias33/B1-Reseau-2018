@@ -211,7 +211,8 @@ On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources)
   * ouvrir VirtualBox
   * ajouter une troisième carte en NAT à la VM
   * démarrer la VM dans VirtualBox
-  * allumer la carte NAT
+  * s'assurer que la nouvelle carte (`enp0s9` ?) possède une IP
+    * c'est juste pour accéder à internet vite fait, le temps d'installer notre serveur DHCP
   * `sudo yum install -y dhcp` 
   * shutdown la VM
 
