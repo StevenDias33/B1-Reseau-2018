@@ -266,7 +266,7 @@ La discussion entre le client et le serveur DHCP se fait en 4 messages simples, 
 * faire une demande DHCP
   * avec [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
   * capturer avec Wireshark l'échange du DORA
-    * vous pouvez `tcpdump` sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
+    * vous pouvez [`tcpdump`](../../cours/lexique.md#tcpdump) sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
     * ou vous pouvez clic-droit sur un lien dans GNS3 et lancer une capture
 
 ---
