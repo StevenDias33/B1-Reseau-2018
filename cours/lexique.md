@@ -90,6 +90,11 @@
 
 #### *HTTP* : HyperText Transfer Protocol
 * protocole utilisé pour discuter avec des serveurs web
+* comme beaucoup de protocole de communicationo, HTTP fonctionne avec un principe de question/réponse
+  * le client effectue une requête HTTP à un serveur web
+    * = il demande une page spécifique
+  * le serveur répond à la requête du clent dans une réponse HTTP
+    * = il donne une page HTML + son CSS et son JS au client
 
 #### *SSH* : Secure SHell
 * protocole/outil utilisés pour se connecter à distance sur un équipement
