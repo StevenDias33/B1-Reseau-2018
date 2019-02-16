@@ -383,7 +383,14 @@ nc 10.1.0.10 9999
 * souvent, pour imiter un simple `wget`, vous pouvez faire `curl -SLO`
 * exemple : 
   * `curl -L www.google.com` permet de récupérer le contenu du serveur web de  `www.google.com`
-  
+
+### `tcpdump`
+* permet de faire de simples captures réseaux afin de les ouvrir dans Wireshark plus tard
+* utilisation simpliste : `sudo tcpdump -i enp0s3 -w capture.pcap`
+  * `-i` pour cibler une interface réseau spécifique
+  * `-w` pour enregistrer la capture dans un fichier spécifique
+  * `.pcap` est l'extension standard pour les captures réseau
+
 ### `traceroute`
 * permet d'afficher les machines intermédiaires pour aller à une destination
 * `traceroute` a plusieurs méthodes de fonctionnement
