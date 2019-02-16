@@ -1,9 +1,9 @@
 # DoS & DDoS
 
 ## Vocab
-* *DoS* : Denial of Service
+* ***DoS* : Denial of Service**
   * Déni de Service
-* *DDoS* : Distributed Denial of Service  
+* ***DDoS* : Distributed Denial of Service**
   * Déni de Service ditribué
 
 Donc un DDoS c'est un juste un DoS distribué, un DoS à grande échelle. Faire tomber un serveur web c'est facile. Faire tomber une flotte de plusieurs milliers de serveurs web c'est autre chose. 
@@ -28,7 +28,6 @@ Le concept est né dans les années 6x/7x dans les premiers réseaux reliant des
   * un réseau de botnets c'est juste des PCs qui sont sur internet et que vous contrôlez
   * plutôt que d'utilisez un seul PC, le réseau de botnets est utilisé pour flooder le serveur cible
    
-
 * **attaque par réflexion/amplification**
   * on utilise des infras déjà en place (par exemple l'infra DNS internet, ou une flotte de serveur NTP)
   * on leur pose une question qui nécessite une réponse très grande
@@ -39,9 +38,12 @@ Le concept est né dans les années 6x/7x dans les premiers réseaux reliant des
   * suivant les serveurs utilisés, les conséquences peuvent être nombreuses
     * c'est souvent un pur flood de la bande passante aussi
     * avec du DNS, on parle vite en To/sec
+  * pour s'en protéger il existe des app externes, comme [Cloudflare](https://www.cloudflare.com/fr-fr/ddos/)
 
 * **slow Loris**
   * attaque présentée en cours
   * concept très simple : on va saturer le nombre de connexions simultanées du serveur
     * plutôt que de saturer sa bande passante
   * avantage ? Possibilité de faire tomber des gros serveurs avec un petit PC (car ne demande pas trop de puissance pour être réalisée)
+  * how ? En simulant des connexions très lentes
+  * relativement simple de s'en protéger, but still, be careful, on est jamais à l'abri
