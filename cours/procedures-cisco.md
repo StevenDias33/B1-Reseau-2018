@@ -12,6 +12,7 @@ Vous trouverez ici quelques mini-procédures pour réaliser certaines opération
 * [Ajouter une route statique](#ajouter-une-route-statique)
 * [Changer son nom de domaine](#changer-son-nom-de-domaine)
 * [Gérer sa table ARP](#gérer-sa-table-arp)
+* [OSPF](#ospf)
 
 ---
 
@@ -76,7 +77,7 @@ Comment garder vos changements à travers les reboots ? Il faut copier la `runni
 
 ### Ajouter une route statique
 
-**1. Passer en mode configuration d'interface**
+**1. Passer en mode configuration**
 ```
 # conf t
 ```
@@ -100,7 +101,7 @@ Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la pa
 ```
 
 ### Changer son nom de domaine
-**1. Passer en mode configuration d'interface**
+**1. Passer en mode configuration**
 ```
 # conf t
 ```
@@ -116,4 +117,35 @@ Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la pa
 ```
 # show arp
 ```
+
+### OSPF
+
+* activation de OSPF  
+
+**1. Passer en mode configuration**
+```
+# conf t
+```
+
+**2. Activer OSPF**
+```
+(config)# router ospf 1
+```
+* le `1` correspond à l'ID de ce processus OSPF
+* nous utiliserons toujours `1` pendant nos derniers cours
+
+**3. Définir un `router-id`**
+```
+(config-router)# router-id 1.1.1.1
+```
+
+**4. Partager une ou plusieurs routes**
+```
+(config-router)# network 10.6.100.0 0.0.0.3 area 0
+```
+* cette commande partage le réseau `10.6.100.0/30` avec les voisins OSPF
+* l'utilisation de cette commande est un peu particulière
+* nous ne rentrerons pas dans les détails de fonctionnement (sauf si on a le temps) de OSPF
+* **donc retenez simplement que pour le masque, vous devez écrire l'inverse de d'habitude**
+* c'est à dire `0.0.0.3` au lieu de `255.255.255.252` par exemple
 
