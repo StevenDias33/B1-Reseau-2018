@@ -16,16 +16,16 @@
     * configuration d'[interfaces](../../cours/lexique.md#carte-réseau-ou-interface-réseau)
     * gestion simplifié de nom de domaine
       * [hostname, FQDN](../../cours/procedures.md#changer-son-nom-de-domaine), fichier [`/etc/hosts`](../../cours/procedures.md#editer-le-fichier-hosts)
-    * configuration firewall
+    * configuration [firewall](../../cours/lexique.md#pare-feu-ou-firewall)
     * configuration routage statique ([TP 3](../3/README.md))
-    * table ARP ([TP4](../4/README.md)) 
+    * table [ARP](../../cours/5.md#arp) ou table de voisinnage ([TP4](../4/README.md)) 
 
 # TP 5 - Premier pas dans le monde Cisco
-Cisco c'est un des leaders concernant la construction de matériel lié au réseau. On explorera cette partie un peu plus ensemble en cours.  
+[Cisco](https://www.cisco.com/c/fr_fr/index.html) c'est un des leaders concernant la construction de matériel lié au réseau. On explorera cette partie un peu plus ensemble en cours.  
 
-Concernant le TP en lui-même, il n'y aura que peu de nouveaux concepts, le but étant de se **familiariser un peu avec** la ligne de commande **Cisco**.  
+Concernant le TP en lui-même, il n'y aura que peu de nouveaux concepts, le but étant de se **familiariser un peu avec** [la ligne de commande **Cisco**](../../cours/procedures-cisco.md).  
 
-Oh et on montera un petit **serveur DHCP** à la fin !  
+Oh et on montera un petit [**serveur DHCP**](../../cours/lexique.md#dhcp--dynamic-host-configuration-protocol) à la fin !  
 
 **Encore un TP solo** ! Vous pouvez vous aider entre vous (oui, aidez-vous, vous êtes beaux et forts), **mais un rendu/personne exigé !**
 
@@ -71,14 +71,14 @@ Oh et on montera un petit **serveur DHCP** à la fin !
 ## 1. Préparation VMs
 
 **1. Création d'un nouveau host-only**
-  * peu importe l'adresse on s'en servira juste pour faire du SSH
+  * peu importe l'adresse on s'en servira juste pour faire du [SSH](../../cours/lexique.md#ssh--secure-shell)
   * **activez le DHCP** comme ça on aura pas besoin de saisir les IPs
 
 **2. Création des VMs**
 * On va juste cloner trois VMs depuis le patron du TP précédent :
-  * `server1.tp5.b1` est dans `net1` et porte l'IP `10.5.1.10/24`
-  * `client1.tp5.b1` est dans `net2` et porte l'IP `10.5.2.10/24`
-  * `client2.tp5.b1` est dans `net2` et porte l'IP `10.5.2.11/24`
+  * `server1.tp5.b1` sera dans `net1` et portera l'IP `10.5.1.10/24`
+  * `client1.tp5.b1` sera dans `net2` et portera l'IP `10.5.2.10/24`
+  * `client2.tp5.b1` sera dans `net2` et portera l'IP `10.5.2.11/24`
 * Ajoutez aux trois VMs une interface host-only **en deuxième carte** dans le host-only précédemment créé
 
 **3. Vous clonez juste les VMs, vous ne les allumez pas.**  
@@ -92,10 +92,10 @@ Oh et on montera un petit **serveur DHCP** à la fin !
 ## 2. Préparation Routeurs Cisco
 Importez l'ISO du routeur et mettez-en deux dans GNS3 : 
 * `router1.tp5.b1` est dans :
-  * `net1` et porte l'IP `10.5.1.254/24`
+  * `net1` et portera l'IP `10.5.1.254/24`
   * `net12`
 * `router2.tp5.b1` est dans :
-  * `net2` et porte l'IP `10.5.2.254/24`
+  * `net2` et portera l'IP `10.5.2.254/24`
   * `net12`
 
 **Vous devrez déterminer vous-même un réseau et un masque pour `net12` et le justifier**. Il n'y aura que deux routeurs dans ce réseau.
@@ -179,7 +179,7 @@ On parle de toutes les machines :
   * [fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) à remplir : `server1.tp5.b1`, `client1.tp5.b1`
 
 Pour tester : 
-* remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) des VMs Linux
+* remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts) des VMs GNU/Linux
 * les deux clients doivent pouvoir `ping server1.tp5.b1`
 * et réciproquement :fire:
 
@@ -220,7 +220,7 @@ On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources)
 
 **4. Configuration du serveur DHCP**
 * le fichier de configuration se trouve dans `/etc/dhcp/dhcpd.conf`
-  * modifier le, et copier le contenu du [modèle](./dhcp/dhcpd.conf) dedans
+  * le modifier, et copier le contenu du [modèle](./dhcp/dhcpd.conf) dedans
 
 **5. Démarrer le serveur DHCP**
 * `sudo systemctl start dhcpd`
@@ -234,7 +234,7 @@ On va recycler `client2.tp5.b1` pour ça (pour économiser un peu de ressources)
 * dans un cas comme dans l'autre, vous devriez récupérer une IP dans la plage d'IP définie dans `dhcpd.conf`
 
 ## 2. Explorer un peu DHCP
-Le principe du protocole DHCP est le suivant : 
+Le principe du [protocole DHCP](../../cours/lexique.md#dhcp--dynamic-host-configuration-protocol) est le suivant : 
 * on a un serveur sur un réseau, il attend que des clients lui demande des IPs
 * des clients peuvent arriver sur le réseau (câble, WiFi, ou autres) et demander une IP
 * le serveur attribuera une IP dans une plage prédéfinie
@@ -243,6 +243,8 @@ Le principe du protocole DHCP est le suivant :
   * comme ça, si le même client revient, il garde son IP
 
 ---
+
+[*Le cours 6 détaille ces opérations au sujet du DHCP*.](../../cours/6.md#dhcp)  
 
 La discussion entre le client et le serveur DHCP se fait en 4 messages simples, **"DORA"** :
 * **"Discover"** : du client vers le serveur
@@ -264,7 +266,7 @@ La discussion entre le client et le serveur DHCP se fait en 4 messages simples, 
 * faire une demande DHCP
   * avec [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
   * capturer avec Wireshark l'échange du DORA
-    * vous pouvez `tcpdump` sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
+    * vous pouvez [`tcpdump`](../../cours/lexique.md#tcpdump) sur le `client1.tp5.b1` ou sur `dhcp-net2.tp5.b1`
     * ou vous pouvez clic-droit sur un lien dans GNS3 et lancer une capture
 
 ---

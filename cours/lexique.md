@@ -90,6 +90,11 @@
 
 #### *HTTP* : HyperText Transfer Protocol
 * protocole utilisé pour discuter avec des serveurs web
+* comme beaucoup de protocole de communicationo, HTTP fonctionne avec un principe de question/réponse
+  * le client effectue une requête HTTP à un serveur web
+    * = il demande une page spécifique
+  * le serveur répond à la requête du clent dans une réponse HTTP
+    * = il donne une page HTML + son CSS et son JS au client
 
 #### *SSH* : Secure SHell
 * protocole/outil utilisés pour se connecter à distance sur un équipement
@@ -378,7 +383,14 @@ nc 10.1.0.10 9999
 * souvent, pour imiter un simple `wget`, vous pouvez faire `curl -SLO`
 * exemple : 
   * `curl -L www.google.com` permet de récupérer le contenu du serveur web de  `www.google.com`
-  
+
+### `tcpdump`
+* permet de faire de simples captures réseaux afin de les ouvrir dans Wireshark plus tard
+* utilisation simpliste : `sudo tcpdump -i enp0s3 -w capture.pcap`
+  * `-i` pour cibler une interface réseau spécifique
+  * `-w` pour enregistrer la capture dans un fichier spécifique
+  * `.pcap` est l'extension standard pour les captures réseau
+
 ### `traceroute`
 * permet d'afficher les machines intermédiaires pour aller à une destination
 * `traceroute` a plusieurs méthodes de fonctionnement
