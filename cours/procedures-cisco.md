@@ -120,8 +120,6 @@ Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la pa
 
 ### OSPF
 
-* activation de OSPF  
-
 **1. Passer en mode configuration**
 ```
 # conf t
