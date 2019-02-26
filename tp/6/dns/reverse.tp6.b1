@@ -1,0 +1,14 @@
+$TTL 86400
+@   IN  SOA     server1.tp6.b1. admin.tp6.b1. (
+        2011071001  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+@       IN  NS          server1.tp6.b1.
+@       IN  PTR         tp6.b1.
+
+10.202     IN  PTR         server1.tp6.b1.
+10.201     IN  PTR         client1.tp6.b1.
+11.201     IN  PTR         client2.tp6.b1.

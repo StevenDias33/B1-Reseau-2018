@@ -456,7 +456,7 @@ Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Po
 ### Mise en place
 
 Sur `server1.tp6.b1` : 
-  * les fichiers nécessaires sont dans le dossier [./dns/](./dns)
+* les fichiers nécessaires sont dans le dossier [./dns/]
 ```
 # Installation du serveur DNS
 sudo yum install -y bind*
@@ -468,10 +468,10 @@ sudo vi /etc/named.conf
 sudo vi /var/named/forward.tp6.b1
 sudo vi /var/named/reverse.tp6.b1
 
-# Ouvrir les ports firewall concernés
-sudo firewall-cmd --add-port=53/tcp --permanent
-sudo firewall-cmd --add-port=53/udp --permanent
-sudo firewall-cmd --reload
+# Changement du propriétaire des deux fichiers créés à l'étape du dessus pour que le serveur DNS puisse les utiliser
+sudo chown named:named /var/named/*tp6.b1
+
+# Ouvrir les ports firewall concernés (53/TCP et 53/UDP)
 
 # Démarrage du service DNS
 sudo systemctl start named
@@ -502,7 +502,10 @@ dig -x 10.6.201.10
 ping client2.tp6.b1
 ```
 
-* on peut aussi filer un serveur DNS au routeur Cisco, je vous laisse trouver ça avec votre moteur de recherché préféré !
+* on peut aussi demander à un routeur Cisco d'utiliser ce DNS, je vous laisse chercher les quelques commandes
+
+
+* reconfigurer le DHCP configuré précédemment pour distribuer aux clients l'adresse de leur nouveau serveur DNS :)
 
 ---
 

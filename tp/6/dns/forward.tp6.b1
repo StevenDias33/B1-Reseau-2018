@@ -1,0 +1,12 @@
+$TTL 604800
+@   IN  SOA     server1.tp6.b1. admin.tp6.b1. (
+              2014030801      ; serial
+              1D      ; refresh
+              1H      ; retry
+              1W      ; expire
+              3H )    ; minimum
+@       NS          server1.tp6.b1.
+
+server1          IN  A   10.6.202.10
+client1          IN  A   10.6.201.10
+client2          IN  A   10.6.201.10
