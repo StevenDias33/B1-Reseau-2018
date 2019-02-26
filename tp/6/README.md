@@ -163,8 +163,8 @@ Machines | `10.6.100.0/30` | `10.6.100.4/30` | `10.6.100.8/30` | `10.6.100.12/30
 --- | --- | --- | --- | --- | --- | --- | --- 
 `r1.tp6.b1` | `10.6.100.1` | `10.6.100.5` | - | - | - | - | `10.6.202.254`
 `r2.tp6.b1` | `10.6.100.2` | - |  `10.6.100.9` | - | - | - | -
-`r3.tp6.b1` | - | - | `10.6.100.10` | `10.6.100.12` | `10.6.101.1` | - | -
-`r4.tp6.b1` | - |  `10.6.100.6` | - | `10.6.100.13` | - | - | -
+`r3.tp6.b1` | - | - | `10.6.100.10` | `10.6.100.13` | `10.6.101.1` | - | -
+`r4.tp6.b1` | - |  `10.6.100.6` | - | `10.6.100.14` | - | - | -
 `r5.tp6.b1` | - | - | - | - |  `10.6.101.2` |  `10.6.201.254` | -
 `client1.tp6.b1` | - | - | - | - | - |  `10.6.201.10` | -
 `client2.tp6.b1` | - | - | - | - | - |  `10.6.201.11` | -
@@ -191,7 +191,7 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 * [ ] [Définition des IPs statiques](../../cours/procedures.md#définir-une-ip-statique)
   * il y a eu un edit dans la procédure pour préciser directement une passerelle :)
   * **DONC précisez la passerelle directement dans le fichier de configuration**
-  * plus tars dans le TP, vous mettre en palce un DHCP ;)
+  * plus tard dans le TP, vous mettrez en place un DHCP ;)
 * [ ] [Définition du nom de domaine](../../cours/procedures.md#changer-son-nom-de-domaine)
 * [ ] remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts)
   * mettez juste les clients et les serveurs
@@ -329,7 +329,7 @@ r4.tp6.b1# conf t
 r4.tp6.b1(config)# ip nat inside source list 1 interface fastEthernet 0/0 overload
 r4.tp6.b1(config)# access-list 1 permit any
 
-# ces deux commandes seront expliquées en détails plus tard (ou demandez-moi)
+# ces deux commandes seront expliquées en détails plus (ou demandez-moi)
 
 # maintenant que le NAT fonctionne, il faut partager la route par défaut à tout le monde. C'est désactivé par défaut sur nos routeurs :
 r4.tp6.b1# conf t
