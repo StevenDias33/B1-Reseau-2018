@@ -191,9 +191,9 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 * [ ] [Définition des IPs statiques](../../cours/procedures.md#définir-une-ip-statique)
   * il y a eu un edit dans la procédure pour préciser directement une passerelle :)
   * **DONC précisez la passerelle directement dans le fichier de configuration**
-  * après y'aura un DHCP ;)
+  * plus tars dans le TP, vous mettre en palce un DHCP ;)
 * [ ] [Définition du nom de domaine](../../cours/procedures.md#changer-son-nom-de-domaine)
-* remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts)
+* [ ] remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts)
   * mettez juste les clients et les serveurs
   * **PAS** les routeurs (parce que... ça sert à rien ?)
 
@@ -229,7 +229,7 @@ Ca se passe sur les routeurs uniquement. On parle de `r1.tp6.b1`, `r2.tp6.b1`, `
 
 # Lab 3 : Let's end this properly
 
-Le Lab 3 c'est le Lab 2 mais avec les deux trois trucs qui manquent pour les clients : 
+Le Lab 3 c'est le Lab 2 mais avec les deux trois trucs qui manquent pour les clients et les serveurs pour que ce soit coolchill : 
 * du NAT
   * pour accéder à internet
 * un service sur lequel taper en interne
@@ -246,11 +246,11 @@ Qui porte quel service ? Pour qui est ce service ? Pourquoie ?
 
 Service | Qui porte le service ? | Pour qui ? | Pourquoi ? 
 --- | --- | --- | ---
-NAT | `r4.tp6.b1` | tout le monde (routeurs & VMs) | Le NAT permet d'accéder à l'extérieur, il permet de sortir du LAN. Toutes les machines peuvent en avoir besoin dans notre petite infra
-Serveur Web | `server1.tp6.b1` | réseau client `10.6.201.0/24` | Le serveur Web symbolise un service d'infra en interne. Dispo pour nos clients. Plus de détails dans la section dédiée.
-DHCP | `client2.tp6.b1` | réseau client `10.6.201.0/24` | Le DHCP (qui permet d'attribuer des IPs automatiquement) c'est pour des clients. Pas pour des serveurs. Un serveur, on veut qu'il ait une IP fixe. 
-DNS | `server1.tp6.b1` | tout le monde (routeurs & VMs) | Le DNS nous permettra de résoudre les noms de domaines en local et nous passer du fichier `/etc/hosts`
-NTP | `server1.tp6.b1` | réseau serveur `10.6.202.0/24` | Le NTP, qui permet la synchronisation de l'heure, est souvent indispensable pourdes serveurs mais totalement négligeable pour des clients (genre vos PCs, s'ils sont pas à l'heure, tout le monde s'en fout)
+**NAT** | `r4.tp6.b1` | tout le monde (routeurs & VMs) | Le NAT permet d'accéder à l'extérieur, il permet de sortir du LAN. Toutes les machines peuvent en avoir besoin dans notre petite infra
+**Serveur Web** | `server1.tp6.b1` | réseau client `10.6.201.0/24` | Le serveur Web symbolise un service d'infra en interne. Dispo pour nos clients. Plus de détails dans la section dédiée.
+**DHCP** | `client2.tp6.b1` | réseau client `10.6.201.0/24` | Le DHCP (qui permet d'attribuer des IPs automatiquement) c'est pour des clients. Pas pour des serveurs. Un serveur, on veut qu'il ait une IP fixe. 
+**DNS** | `server1.tp6.b1` | tout le monde (routeurs & VMs) | Le DNS nous permettra de résoudre les noms de domaines en local et nous passer du fichier `/etc/hosts`
+**NTP** | `server1.tp6.b1` | réseau serveur `10.6.202.0/24` | Le NTP, qui permet la synchronisation de l'heure, est souvent indispensable pourdes serveurs mais totalement négligeable pour des clients (genre vos PCs, s'ils sont pas à l'heure, tout le monde s'en fout)
 
 **Avec tout ça, on a un petit réseau propre, carré, et (presque) autonome !**
 
@@ -555,3 +555,9 @@ Sur toutes les autres machines :
 * vérifier l'état de la synchronisation NTP
 
 ---
+
+Quelqu'un est arrivé là ? Vraiment ? 
+
+<p align="center">
+  <img src="./pic/u-nailed-it-bro.gif" title="U nailed it bro.">
+</p>
