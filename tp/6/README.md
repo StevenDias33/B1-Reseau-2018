@@ -409,13 +409,16 @@ Le serveur DHCP, c'est pour le réseau des clients : `10.6.201.0/24`. Pour écon
   * **n'oubliez pas de changer les IPs dans le fichier `dhcpd.conf`** pour que ça colle avec ce TP
 * puis :
 ```
-# installation du serveur DHCP
+# Installation du serveur DHCP
 sudo yum install -y dhcp
 
-# remplir le fichier /etc/dhcp/dhcpd.conf avec l'exemple
+# Remplir le fichier /etc/dhcp/dhcpd.conf avec l'exemple
 
-# démarrer le serveur DHCP
+# Démarrer le serveur DHCP
 sudo systemctl start dhcpd
+
+# Faire en sorte que le serveur DHCP démarre au boot de la machine
+sudo systemctl enable dhcpd
 ```
 
 Faire un test
@@ -428,7 +431,110 @@ Faire un test
 
 ## 4. Serveur DNS
 
+Le DNS, c'est un service d'infra, alors c'est côté réseau des serveurs (`10.6.202.0/24`). On va le mettre sur notre `server1.tp6.b1`.  
 
+### Présentation
+
+Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Pour ça, on va mettre en palce un **serveur DNS**, qui sera chargé de :
+* stocker toutes les infos liées aux noms de domaine de l'infra
+  * quelles IP associée à quel nom de domaine
+  * et réciproquement
+* servir à des clients un service DNS
+  * on peut lui demander pour résoudre des IP vers noms de domaine
+  * ou réciproquement
+
+### Mise en place
+
+Sur `server1.tp6.b1` : 
+  * les fichiers nécessaires sont dans le dossier [./dns/](./dns)
+```
+# Installation du serveur DNS
+sudo yum install -y bind*
+
+# Edition du fichier de configuration (voir fichier exemples dans ./dns/)
+sudo vi /etc/named.conf
+
+# Edition des fichiers de zone (voir fichiers exemples dans ./dns/)
+sudo vi /var/named/forward.tp6.b1
+sudo vi /var/named/reverse.tp6.b1
+
+# Ouvrir les ports firewall concernés
+sudo firewall-cmd --add-port=53/tcp --permanent
+sudo firewall-cmd --add-port=53/udp --permanent
+sudo firewall-cmd --reload
+
+# Démarrage du service DNS
+sudo systemctl start named
+
+# Faire en sorte que le service démarre au boot de la VM
+sudo systemctl enable named
+```
+
+Pour tester :
+* depuis `server1.tp6.b1` lui-même, ou n'importe quelle machine Linux qui peut le joindre (les clients)
+```
+# Remplir le fichier /etc/resolv.conf pour mettre l'IP de notre nouveau DNS :)
+echo "nameserver 10.6.202.10" | sudo tee /etc/resolv.conf
+
+# On peut lui poser des questions avec la commande dig maintenant
+
+# A quelle IP correspond "server1.tp6.b1" ?
+dig server1.tp6.b1
+
+# A quelle IP correspond "client2.tp6.b1" ?
+dig client2.tp6.b1
+
+# A quel nom de domaine correspond l'IP 10.6.201.10 ?
+dig -x 10.6.201.10
+```
 ---
 
 ## 5. Serveur NTP
+
+Idem ici, NTP, c'est du service d'infra pour nos serveurs ! Alors ce sera sur `server1.tp6.b1` encore.  
+
+Tout ça serait sur plusieurs machines dans un cas réel. Rien ne vous empêche d'en créer d'autres pour tester si votre machine vous le permet.
+
+### Présentation
+
+NTP (pour *Network Time Protocol*) est le protocole (= la langue) que l'on utilise pour permettr eà plusieurs serveurs d'être synchronisés au niveau de la date et de l'heure. Le problème est loin d'être trivial lorsque l'on s'y intéresse de près.  
+
+Il existe des [serveurs NTP publics](https://www.pool.ntp.org), sur lesquels n'importe qui peut se synchroniser. Ils servent souvent de référence.  
+
+Dans notre cas :
+* on va demander à `server1.tp6.b1` de se synchroniser sur un serveur externe
+* et on va demander à toutes les autres machines clientes de se synchroniser sur `server1.tp6.b1`
+
+Dernier détail : sur CentOS, le service qui gère NTP s'appelle `chrony` :
+* le démon systemd s'appelle `chronyd`
+  * donc `sudo systemctl restart chronyd` par exemple
+* la commande pour avoir des infos est `chronyc`
+  * `chronyc sources` pour voir les serveurs pris en compte par `cronyd`
+  * `chronyc tracking` pour voir l'état de la synchronisation
+* la configuration se trouve dans `/etc/chrony.conf`
+* présent par défaut sur CentOS
+
+### Mise en place
+
+Sur `server1.tp6.b1` : 
+* éditer le fichier `/etc/chrony.conf`
+  * [un contenu modèle se trouve ici](./chrony/serveur/chrony.conf)
+  * choisissez le pool de serveurs français sur [le site des serveurs externes de référence](https://www.pool.ntp.org) et ajoutez le à la configuration
+* [ouvrir le port utilisé par NTP](../../cours/procedures.md#interagir-avec-le-firewall)
+  * c'est le port 123/UDP
+* démarrer le service `chronyd`
+  * `sudo systemctl start chronyd`
+* vérifier l'état de la synchronisation NTP
+  * `chronyc sources`
+  * `chronyc tracking`
+
+Sur toutes les autres machines : 
+* éditer le fichier `/etc/chrony.conf`
+  * [un contenu modèle se trouve ici](./chrony/client/chrony.conf)
+* [ouvrir le port utilisé par NTP](../../cours/procedures.md#interagir-avec-le-firewall)
+  * c'est le port 123/UDP
+* démarrer le service `chronyd`
+  * `sudo systemctl start chronyd`
+* vérifier l'état de la synchronisation NTP
+
+---
