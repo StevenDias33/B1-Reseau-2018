@@ -141,7 +141,7 @@ Nous allons nous servir des *aires* OSPF pour distinguer :
 * une aire pour les services d'infrastructures
   * ce sera l'`area 2`
   * dans un cas réel on peut trouver tout un tas de trucs ici, beaucoup de services internes
-  * nous on aura un p'tit serveur web ou un `netcat` simple, pour simuler un service un service disponible
+  * nous on aura un p'tit serveur web ou un `netcat` simple, pour simuler un service disponible
 
 ### Réseaux IP et aires OSPF
 
