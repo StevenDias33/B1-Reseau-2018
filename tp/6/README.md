@@ -555,9 +555,3 @@ Sur toutes les autres machines :
 * vérifier l'état de la synchronisation NTP
 
 ---
-
-Quelqu'un est arrivé là ? Vraiment ? 
-
-<p align="center">
-  <img src="./pic/u-nailed-it-bro.gif" title="U nailed it bro.">
-</p>
