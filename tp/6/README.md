@@ -42,10 +42,10 @@ Au menu :
 * il y aura **un réseau dédié aux serveurs**
   * un serveur a une IP fixe, pas de DHCP ici donc
   * un serveur au moins fera tourner un serveur web (ou un `netcat`)
+* et un peu de DNS et de NTP
+    * comme ça, tout sera fait maison : routage, adressage IP, DNS, DHCP, NAT, NTP ! Boom.
 * **les clients pourront joindre le réseau de serveurs et internet**
 * en bonus : 
-  * mettre en place un serveur DNS
-    * comme ça, tout sera fait maison : routage, adressage IP, DNS, DHCP, NAT ! Boom.
   * approfondir OSPF
     * jouer avec authentification, coûts, loopback interfaces, etc.
   * utilisation de switch Cisco + mise en place de VLAN
