@@ -304,7 +304,7 @@
 * permet de demander une IP en DHCP
 * pour lâcher votre bail DHCP (`DHCPRELEASE`)
   * `sudo dhclient -v -r` (`r` comme `renew`)
-* pour redemander une IP ([DORA](../../cours/6.md#dhcp))
+* pour redemander une IP ([DORA](./6.md#dhcp))
   * `sudo dhclient -v`
 
 ### `ipconfig` ou `ifconfig` ou `ip a`
