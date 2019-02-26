@@ -242,6 +242,16 @@ Le Lab 3 c'est le Lab 2 mais avec les deux trois trucs qui manquent pour les cli
   * pour avoir l'heure synchronisée en local
   * comme mentionné en cours : c'ets **très important** et pas si trivial que ça
 
+Qui porte quel service ? Pour qui est ce service ? Pourquoie ?
+
+Service | Qui porte le service ? | Pour qui ? | Pourquoi ? 
+--- | --- | --- | ---
+NAT | `r4.tp6.b1` | tout le monde (routeurs & VMs) | Le NAT permet d'accéder à l'extérieur, il permet de sortir du LAN. Toutes les machines peuvent en avoir besoin dans notre petite infra
+Serveur Web | `server1.tp6.b1` | réseau client `10.6.201.0/24` | Le serveur Web symbolise un service d'infra en interne. Dispo pour nos clients. Plus de détails dans la section dédiée.
+DHCP | `client2.tp6.b1` | réseau client `10.6.201.0/24` | Le DHCP (qui permet d'attribuer des IPs automatiquement) c'est pour des clients. Pas pour des serveurs. Un serveur, on veut qu'il ait une IP fixe. 
+DNS | `server1.tp6.b1` | tout le monde (routeurs & VMs) | Le DNS nous permettra de résoudre les noms de domaines en local et nous passer du fichier `/etc/hosts`
+NTP | `server1.tp6.b1` | réseau serveur `10.6.202.0/24` | Le NTP, qui permet la synchronisation de l'heure, est souvent indispensable pourdes serveurs mais totalement négligeable pour des clients (genre vos PCs, s'ils sont pas à l'heure, tout le monde s'en fout)
+
 **Avec tout ça, on a un petit réseau propre, carré, et (presque) autonome !**
 
 ---
