@@ -482,6 +482,7 @@ sudo systemctl enable named
 
 Pour tester :
 * depuis `server1.tp6.b1` lui-même, ou n'importe quelle machine Linux qui peut le joindre (les clients)
+  * **APRES avoir vider le fichier /etc/hosts de ce que vous y aviez mis avant**
 ```
 # Remplir le fichier /etc/resolv.conf pour mettre l'IP de notre nouveau DNS :)
 echo "nameserver 10.6.202.10" | sudo tee /etc/resolv.conf
@@ -496,7 +497,13 @@ dig client2.tp6.b1
 
 # A quel nom de domaine correspond l'IP 10.6.201.10 ?
 dig -x 10.6.201.10
+
+# Ou tout simplement
+ping client2.tp6.b1
 ```
+
+* on peut aussi filer un serveur DNS au routeur Cisco, je vous laisse trouver ça avec votre moteur de recherché préféré !
+
 ---
 
 ## 5. Serveur NTP
