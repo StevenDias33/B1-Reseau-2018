@@ -213,7 +213,7 @@
 
 ### Pare-feu ou *firewall*
 * présent sur la plupart des équipements (PCs, serveurs, etc)
-* peut exister sous la forme d'une équipement physique
+* peut exister sous la forme d'un équipement physique
 * c'est une application qui permet de filtrer le trafic réseau d'une machine
   * filtrage du trafic qui entre sur la machine
     * par exemple le firewall Windows bloque le `ping` entrant par défaut
