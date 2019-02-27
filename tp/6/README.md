@@ -42,10 +42,10 @@ Au menu :
 * il y aura **un réseau dédié aux serveurs**
   * un serveur a une IP fixe, pas de DHCP ici donc
   * un serveur au moins fera tourner un serveur web (ou un `netcat`)
+* et un peu de DNS et de NTP
+    * comme ça, tout sera fait maison : routage, adressage IP, DNS, DHCP, NAT, NTP ! Boom.
 * **les clients pourront joindre le réseau de serveurs et internet**
 * en bonus : 
-  * mettre en place un serveur DNS
-    * comme ça, tout sera fait maison : routage, adressage IP, DNS, DHCP, NAT ! Boom.
   * approfondir OSPF
     * jouer avec authentification, coûts, loopback interfaces, etc.
   * utilisation de switch Cisco + mise en place de VLAN
@@ -133,15 +133,15 @@ Nous allons nous servir des *aires* OSPF pour distinguer :
   * toutes les autres y sont connectées
     * donc tout trafic qui change d'aire passe forcément par celle-ci
   * le WAN (~= internet) est souvent accessible depuis l'aire "backbone"
-* une aire pour les services d'infrastructures
-  * ce sera l'`area 1`
-  * dans un cas réel on peut trouver tout un tas de trucs ici, beaucoup de services internes
-  * nous on aura un p'tit serveur web ou un `netcat` simple, pour simuler un service un service disponible
 * une aire pour les clients
-  * ce sera l'`area 2`
+  * ce sera l'`area 1`
   * X clients seront ajoutés
   * leur adressage IP et leur table de routage seront gérées automatiquement
     * présence d'un serveur DHCP
+* une aire pour les services d'infrastructures
+  * ce sera l'`area 2`
+  * dans un cas réel on peut trouver tout un tas de trucs ici, beaucoup de services internes
+  * nous on aura un p'tit serveur web ou un `netcat` simple, pour simuler un service disponible
 
 ### Réseaux IP et aires OSPF
 
@@ -163,7 +163,7 @@ Machines | `10.6.100.0/30` | `10.6.100.4/30` | `10.6.100.8/30` | `10.6.100.12/30
 --- | --- | --- | --- | --- | --- | --- | --- 
 `r1.tp6.b1` | `10.6.100.1` | `10.6.100.5` | - | - | - | - | `10.6.202.254`
 `r2.tp6.b1` | `10.6.100.2` | - |  `10.6.100.9` | - | - | - | -
-`r3.tp6.b1` | - | - | `10.6.100.10` | `10.6.100.12` | `10.6.101.1` | - | -
+`r3.tp6.b1` | - | - | `10.6.100.10` | `10.6.100.14` | `10.6.101.1` | - | -
 `r4.tp6.b1` | - |  `10.6.100.6` | - | `10.6.100.13` | - | - | -
 `r5.tp6.b1` | - | - | - | - |  `10.6.101.2` |  `10.6.201.254` | -
 `client1.tp6.b1` | - | - | - | - | - |  `10.6.201.10` | -
@@ -191,7 +191,7 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 * [ ] [Définition des IPs statiques](../../cours/procedures.md#définir-une-ip-statique)
   * il y a eu un edit dans la procédure pour préciser directement une passerelle :)
   * **DONC précisez la passerelle directement dans le fichier de configuration**
-  * plus tars dans le TP, vous mettre en palce un DHCP ;)
+  * plus tard dans le TP, vous mettrez en place un DHCP ;)
 * [ ] [Définition du nom de domaine](../../cours/procedures.md#changer-son-nom-de-domaine)
 * [ ] remplir [les fichiers `hosts`](../../cours/procedures.md#editer-le-fichier-hosts)
   * mettez juste les clients et les serveurs
@@ -329,7 +329,7 @@ r4.tp6.b1# conf t
 r4.tp6.b1(config)# ip nat inside source list 1 interface fastEthernet 0/0 overload
 r4.tp6.b1(config)# access-list 1 permit any
 
-# ces deux commandes seront expliquées en détails plus tard (ou demandez-moi)
+# ces deux commandes seront expliquées en détails plus (ou demandez-moi)
 
 # maintenant que le NAT fonctionne, il faut partager la route par défaut à tout le monde. C'est désactivé par défaut sur nos routeurs :
 r4.tp6.b1# conf t
@@ -456,7 +456,7 @@ Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Po
 ### Mise en place
 
 Sur `server1.tp6.b1` : 
-  * les fichiers nécessaires sont dans le dossier [./dns/](./dns)
+* les fichiers nécessaires sont dans le dossier [./dns/]
 ```
 # Installation du serveur DNS
 sudo yum install -y bind*
@@ -468,10 +468,10 @@ sudo vi /etc/named.conf
 sudo vi /var/named/forward.tp6.b1
 sudo vi /var/named/reverse.tp6.b1
 
-# Ouvrir les ports firewall concernés
-sudo firewall-cmd --add-port=53/tcp --permanent
-sudo firewall-cmd --add-port=53/udp --permanent
-sudo firewall-cmd --reload
+# Changement du propriétaire des deux fichiers créés à l'étape du dessus pour que le serveur DNS puisse les utiliser
+sudo chown named:named /var/named/*tp6.b1
+
+# Ouvrir les ports firewall concernés (53/TCP et 53/UDP)
 
 # Démarrage du service DNS
 sudo systemctl start named
@@ -502,7 +502,10 @@ dig -x 10.6.201.10
 ping client2.tp6.b1
 ```
 
-* on peut aussi filer un serveur DNS au routeur Cisco, je vous laisse trouver ça avec votre moteur de recherché préféré !
+* on peut aussi demander à un routeur Cisco d'utiliser ce DNS, je vous laisse chercher les quelques commandes
+
+
+* reconfigurer le DHCP configuré précédemment pour distribuer aux clients l'adresse de leur nouveau serveur DNS :)
 
 ---
 
