@@ -147,3 +147,10 @@ Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la pa
 * **donc retenez simplement que pour le masque, vous devez écrire l'inverse de d'habitude**
 * c'est à dire `0.0.0.3` au lieu de `255.255.255.252` par exemple
 
+**Vérifier l'état d'OSPF** :
+```
+# show ip protocols
+# show ip ospf interface
+# show ip ospf neigh
+# show ip ospf border-routers
+```
