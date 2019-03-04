@@ -558,3 +558,48 @@ Sur toutes les autres machines :
 * vérifier l'état de la synchronisation NTP
 
 ---
+
+# Bilan
+
+* on a des **clients** 
+  * configurés automatiquement dès qu'on les ajoute grâce au serveur DHCP
+    * IP 
+    * passerelle
+    * serveur DNS
+  * peuvent joindre internet sans pb avec un navigateur web
+  * peuvent joindre le serveur web (NGINX) en interne
+* on a des **serveurs**
+  * ils sont synchros au niveau de l'heure grâce à NTP
+  * ils sont en charge de la résolution de nom locale avec le serveur DNS
+  * ils fournissent des services d'infra (symbolisé par notre serveur web NGINX)
+* on a des **routeurs**
+  * qui mettent en place un routage dynamique (OSPF)
+  * qui fournissent un accès WAN (Internet) grâce au NAT
+
+:fire:
+
+# Aller plus loin
+
+Pistes pour aller plus loin (l'ordre n'est pas important), mp si vous voulez + d'infos :
+* Serveur Web
+  * sécuriser le serveur Web avec le protocole TLS
+    * et expliquer un peu la démarche
+  * mettre en place un outil pour gérer son site web
+    * un bête partage FTP peut faire l'affaire
+    * l'utilisateur se connecte pour déposer ses jolies pages html :)
+* Serveurs SSH
+  * sécuriser le(s) serveur(s) SSH avec une authentification par échange de clés
+* DNS
+  * créer un *slave* DNS
+    * le serveur qu'on a là c'est un *master*
+  * mettre en place une interface graphique pour gérer le DNS
+    * parce que les fichiers de zone c'est quand même super chiant écrire/modifier
+* Switch
+  * remplacer les switches pourris de GNS par des switch cisco et mettre en place des VLANs
+    * vous pouvez utilisez des IOU L2 pour ça, demandez moi pour + d'infos
+* Routeurs
+  * mettre en place une authentification MD5 pour OSPF
+  * utiliser LACP pour agréger deux interfaces réseau 
+    * tolérance de panne (si un câble lâche, on est toujours bon)
+    * débit plus haut, nombre de connexions simultanées augmenté
+      * attention avec ça, c'est pas aussi bête que doubler le débit, nan nan. Mp pour + d'infos
