@@ -98,7 +98,8 @@ Au menu :
   * [DHCP (adressage dynamique pour les clients)](#3-serveur-dhcp)
   * [DNS](#4-serveur-dns)
   * [NTP (synchronisation de l'heure)](#5-serveur-ntp)
-
+* [Bilan](#bilan)
+* [Aller plus loin](#aller-plus-loin)
 
 # Lab 1 : Simple OSPF
 
