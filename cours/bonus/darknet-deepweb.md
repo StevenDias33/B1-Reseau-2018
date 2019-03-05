@@ -154,14 +154,7 @@ Euh, juste. Un réseau public, avec des outils ouverts, une cryptographie connue
 
 ## 4. So, how does it work ?
 
-On a plein de serveurs, ils sont connectés, on est biens. Comment on se sert du bail maintenant ? Plusieurs possibilités : 
-* on accède à un service Web à travers le réseau tor
-  * avec le Tor Browser par exemple
-* on accède à un "hidden service" tor
-  * avec le Tor Browser
-* d'autres types d'utilisation moins courantes (mais techniquement on peut faire passer un paquet de trucs par tor)
-
-### Concept de Onion routing
+Tout le réseau tor repose sur le concept de **Onion routing**.
 
 > Le principe nous vient à l'origine de l'armée US il y a un bail maintenant.
 
