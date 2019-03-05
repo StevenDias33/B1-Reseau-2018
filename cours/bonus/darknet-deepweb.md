@@ -1,5 +1,18 @@
 # Darknet / Deepweb
 
+* [I. Pré-requis vocabularien](#i-pré-requis-vocabularien)
+* [II. Deepweb](#ii-deepweb)
+  * [0. On se met d'accord sur les mots](#0-on-se-met-daccord-sur-les-mots)
+  * [1. Intro](#1-intro)
+  * [2. Le projet Tor](#2-le-projet-tor)
+  * [3. Pourquoi/quand utiliser un tel outil](#3-pourquoiquand-utiliser-un-tel-outil-)
+  * [4. So, how does it actually work ?](#4-so-how-does-it-work-)
+  * [5. Accéder à un service web avec tor](#5-accéder-à-un-service-web-avec-tor)
+    * [Est-ce qu'on peut casser l'anonymat/le chiffrement ?](#ok-le-plus-important--comment-on-casse-tout-ça--passons-en-revue-les-différents-positions-possibles-pour-un-attaquant) (spoiler alert : moyennant beaucoup d'efforts, oui)
+  * [6. Hidden service](#6-hidden-services)
+  
+* [III. Darkweb]
+
 # I. Pré-requis vocabularien
 *Effectivement, le titre ne veut rien dire.*
 
@@ -46,11 +59,13 @@ Donc le Web :
   * ou "navigateurs web"
   * mais pas que. Je pense pas qu'on puisse qualifier `curl` de "navigateur web"
 
-Le Web c'est le truc cool pour échanger de l'info à travers le monde entier, avec un langage commun : HTTP, et un réseau pour acheminr nos requêtes.  
+Le Web c'est le truc cool pour échanger de l'info à travers le monde entier, avec un langage commun : HTTP, et un réseau pour acheminr nos requêtes. 
 
 :fire: !  
 
-Ou ptet pas :fire: en fait...  
+Mais pas tout le temps :fire: en fait...  
+
+Mais avant ça, parlons du Deepweb.
 
 ---
 
@@ -201,7 +216,7 @@ Anonymat et confidentialité :
 
 ---
 
-## 4. Accéder à un service Web avec Tor
+## 5. Accéder à un service Web avec Tor
 
 Izi : ouvrir tor browser, se connecter à google.com. 'oilà. Faites-le, la suite aura plus de sens.  
 
@@ -362,7 +377,7 @@ A ça :
 
 ---
 
-## 5. Hidden services
+## 6. Hidden services
 
 Un Hidden Service est donc un service, par exemple un serveur web, qui est au sein du réseau tor.  
 
