@@ -2,6 +2,7 @@
 
 * [I. Pré-requis vocabularien](#i-pré-requis-vocabularien)
 * [II. Deepweb](#ii-deepweb)
+* [III. Darkweb](#iii-darknet--darkweb)
   * [0. On se met d'accord sur les mots](#0-on-se-met-daccord-sur-les-mots)
   * [1. Intro](#1-intro)
   * [2. Le projet Tor](#2-le-projet-tor)
@@ -11,8 +12,6 @@
     * [Est-ce qu'on peut casser l'anonymat/le chiffrement ?](#ok-le-plus-important--comment-on-casse-tout-ça--passons-en-revue-les-différents-positions-possibles-pour-un-attaquant) (spoiler alert : moyennant beaucoup d'efforts, oui)
   * [6. Hidden service](#6-hidden-services)
   
-* [III. Darkweb]
-
 # I. Pré-requis vocabularien
 *Effectivement, le titre ne veut rien dire.*
 
