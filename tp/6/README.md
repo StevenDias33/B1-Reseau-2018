@@ -463,11 +463,11 @@ Sur `server1.tp6.b1` :
 sudo yum install -y bind*
 
 # Edition du fichier de configuration (voir fichier exemples dans ./dns/)
-sudo vi /etc/named.conf
+sudo nano /etc/named.conf
 
 # Edition des fichiers de zone (voir fichiers exemples dans ./dns/)
-sudo vi /var/named/forward.tp6.b1
-sudo vi /var/named/reverse.tp6.b1
+sudo nano /var/named/forward.tp6.b1
+sudo nano /var/named/reverse.tp6.b1
 
 # Changement du propriétaire des deux fichiers créés à l'étape du dessus pour que le serveur DNS puisse les utiliser
 sudo chown named:named /var/named/*tp6.b1
