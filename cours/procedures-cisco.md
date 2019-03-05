@@ -134,6 +134,8 @@ Exemple, pour ajouter une route vers le réseau 10.1.0.0/24 en passant par la pa
 
 **3. Définir un `router-id`**
 ```
+# dans nos TP, le router-id sera toujours le numéro du routeur répété 4 fois
+# donc 1.1.1.1 pour router1
 (config-router)# router-id 1.1.1.1
 ```
 
