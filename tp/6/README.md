@@ -433,7 +433,7 @@ sudo systemctl enable dhcpd
 ```
 
 Faire un test
-* avec une nouvelle VM ou `client1.tp5.b1`
+* avec une nouvelle VM ou `client1.tp6.b1`
   * [configurer l'interface en DHCP, en dynamique (pas en statique)](../../cours/procedures.md#définir-une-ip-dynamique-dhcp)
   * et/ou utiliser [`dhclient`](../../cours/lexique.md#dhclient-linux-only)
 * dans un cas comme dans l'autre, vous devriez récupérer une IP dans la plage d'IP définie dans `dhcpd.conf`
@@ -457,7 +457,7 @@ Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Po
 ### Mise en place
 
 Sur `server1.tp6.b1` : 
-* les fichiers nécessaires sont dans le dossier [./dns/]
+* les fichiers nécessaires sont dans le dossier [./dns/](./dns)
 ```
 # Installation du serveur DNS
 sudo yum install -y bind*
