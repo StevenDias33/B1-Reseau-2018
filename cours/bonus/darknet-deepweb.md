@@ -71,7 +71,7 @@ Ou ptet pas :fire: en fait...
 
 # III. Darknet / Darkweb
 
-## On se met d'accord sur les mots
+## 0. On se met d'accord sur les mots
 
 Alors darknet ou darkweb ? J'sais pas c'est sujet à débat : 
 * "dark" 
@@ -81,7 +81,7 @@ Alors darknet ou darkweb ? J'sais pas c'est sujet à débat :
   * "net" : c'est un réseau, au sens large du terme, donc pourquoi pas "net"
   * "web" : le "darknet/web" c'est une alternative au [Web](#web) défini plus haut. **Pas à Internet**. Donc on préférera "web" pour la suite du document. 
 
-## Intro
+## 1. Intro
 
 Le **Darkweb** c'est : 
 * un réseau alternatif au réseau Web
@@ -90,7 +90,7 @@ Le **Darkweb** c'est :
 
 Souvent, quand on parle du Darkweb, on parle de [tor](https://www.torproject.org/) (de la même façon que quand on parle du WAN on parle génériquement d'Internet). 
 
-## Le projet Tor
+## 2. Le projet Tor
 
 Le mot "tor" désigne :
 * un projet qui est l'initiative qui a mené à la création du "réseau tor"
@@ -127,7 +127,18 @@ Euh, juste. Un réseau public, avec des outils ouverts, une cryptographie connue
 
 ---
 
-## So, how does it work ?
+## 3. Pourquoi/quand utiliser un tel outil ?
+
+**Les cas d'utilisation parfaitement légitimes sont nombreux :**
+* visite d'un site d'achat/un site bancaire depuis un WiFi public
+* journalistes de guerre
+* habitants d'un pays qui restreint l'accès à l'information globale
+* cacher des choses ?... mais ça peut être légitime parfois aussi. Exemple : tu bosses dans une boîte, trkl. Boum, pose déj. Tu prends 10 min peinard avant d'aller manger et tu visites deux trois sites : facebook, machin, gnagna, ET ton site de rencontre gay. Bon bah techniquement, quelqu'un qui sniffe le réseau (ou juste... l'admin réseau ?) sait que tu viens de faire ça. **Il connaît pas le contenu du message, juste sa source et sa destination. Mais c'est déjà suffisant** pour tirer des conclusions. Et peut-être que tu le fais régulièrement. Et peut-être que t'as pas envie d'être viré parce que ton patron est homophobe.
+* et d'innombrables autres. De façon générale, j'm'inscrirais à une télé-réalité si j'voulais que mes moindres faits et gestes soient publics
+
+---
+
+## 4. So, how does it work ?
 
 On a plein de serveurs, ils sont connectés, on est biens. Comment on se sert du bail maintenant ? Plusieurs possibilités : 
 * on accède à un service Web à travers le réseau tor
@@ -180,30 +191,25 @@ Plusieurs procédés cryptographiques ont lieu ici. Le coeur du processus se dé
 
 Anonymat et confidentialité : 
 * aucun des relais, à part le dernier n'a pu voir la donnée
+  * qui elle-même peut être chiffrée (http**s** par exemple)
 * seul le dernier des relais connaît la destination
 * seul le premier relais connaît la source (le PC)
   * **le serveur de destination ne connaît pas le PC**
 * un chiffrement fort a été utilisé de bout en bout au sein du réseau tor
 
-> N'oubliez pas que la "donnée", ça peut être du https, donc un trafic chiffré de base. 
-
-:fire:
+> N'oubliez pas que ça se pose "dessus" Internet, ou n'importe quel réseau. Donc on peut toujours avoir un acheminement des messages classique en dessous. Des routeurs et des switches quoi, qui amènent les messages aux différents relais/serveurs, comme dans nos TPs. 
 
 ---
 
-### Accéder à un service Web avec Tor
+## 4. Accéder à un service Web avec Tor
 
 Izi : ouvrir tor browser, se connecter à google.com. 'oilà. Faites-le, la suite aura plus de sens.  
 
-A gauche de la barre d'URL, cliquez (là où il y a le cadenas vert d'habitude), pour obtenir la liste des serveurs intermédiaires par lesquels votre requête est passée avant d'atteindre la destination.  
+A gauche de la barre d'URL, cliquez (là où il y a le cadenas vert d'habitude), pour obtenir la liste des serveurs intermédiaires par lesquels votre requête est passée avant d'atteindre la destination. **Le réseau tor utilise trois relais pour chaque connexion, on appelle ces trois relais un "circuit tor".**
 
-**Le réseau tor utilise trois relais pour chaque connexion, on appelle ces trois relais un "circuit tor".**
+#### Ok le plus important : comment on casse tout ça ? Passons en revue les différents positions possibles pour un attaquant. 
 
-Ok comment on casse tout ça ? Passons en revue les différents positions possibles pour un attaquant. 
-
-### Positions possibles pour un attaquant
-
-#### A. Dans le réseau tor
+### A. Dans le réseau tor
 
 Par exemple : le hacker est un membre de la communauté tor qui héberge un relai.
 
@@ -226,7 +232,7 @@ Par exemple : le hacker est un membre de la communauté tor qui héberge un rela
 
 Littéralement aucune info à part "y'a des trucs".
 
-#### B. Côté client
+### B. Côté client
 
 Par exemple : le hacker est connecté au même WiFi public que vous (gare, cybercafé, restaurants, etc.)
 
@@ -245,7 +251,7 @@ Par exemple : le hacker est connecté au même WiFi public que vous (gare, cyber
 
 Ici pas grand chose encore. Le hacker sait que "PC" utilise tor. Mais c'est tout. Pas d'accès ni au contenu, **ni à la destination** des messages. 
 
-#### C. Côté serveur
+### C. Côté serveur
 
 Par exemple : le hacker est un employé malveillant chez facebook.com, ou sur le dernier relai tor
 
@@ -280,7 +286,7 @@ Pas grand chose toujours. Le hacker sait quel serveur est visité grâce au rés
 
 Donc toujours pas ouf, on a pas le contenu des messages, pas plus que côté client. On connaît le site de destination, c'est plus utile que le côté client pour détecter certaines choses, mais c'est dans des cas très minoritaire. **On connaît ne pas la source du message.**
 
-#### D. Côté client + serveur
+### D. Côté client + serveur
 
 Par exemple : honnêtement ? Un mec qui en veut vraiment :
 * il faudrait qu'il possède deux noeuds tor parmi les trois choisis aléatoirement dans votre communication (celui d'entrée et de sortie)
@@ -313,7 +319,9 @@ Bon on a un problème. Moyennant effort, quelqu'un de mal-intentionné (et de tr
 
 C'est suffisant pour avoir besoin d'une solution afin de disposer de services garantissant un anonymat total. 
 
-**Le concept est simple, on va éliminer purement et simplement la position "côté serveur"**. La communication à travers tor passe par au sein du réseau tor, avant de resortir sur le web. Petit schéma. On va passer de ça :
+**Le concept est simple, on va éliminer purement et simplement la position "côté serveur"**. La communication à travers tor passe par au sein du réseau tor, avant de resortir sur le web. Petit schéma.  
+
+On va passer de ça :
 ```
                  +---------------------------+
                  |                           |
@@ -331,7 +339,7 @@ C'est suffisant pour avoir besoin d'une solution afin de disposer de services ga
                  +---------------------------+
 ```
 
-* à ça :
+A ça :
 ```
                  +---------------------------+
                  |                           |
@@ -350,6 +358,39 @@ C'est suffisant pour avoir besoin d'une solution afin de disposer de services ga
 
 ```
 
+**Et maintenant, ce serveur, il s'appelle un "hidden service", et l'adresse pour le joindre sera sous la forme `<HASH>.onion`.**
+
 ---
 
-> Parlons-en : je propose Lightweb plutôt. C'est moins marketing mais plus proche de la réalité.
+## 5. Hidden services
+
+Un Hidden Service est donc un service, par exemple un serveur web, qui est au sein du réseau tor.  
+
+Rien de magique ici, avec un peu de détails :
+* faire tourner un service classique
+  * un serveur web NGINX par exemple
+* installer `tor`
+* configurer `tor` et lui dire "hé, j'ai un service là frer"
+* lancer tor
+  * les échanges cryptographiques sont réalisés
+  * le serveur choisit des I.P. (introduction points) qui permettront de joindre un hidden service hébergé... quelque part
+  * tor génère une adresse en `.onion` qui rend le serveur accessible avec un client tor
+* utiliser un client tor (tor browser) pour visiter le site
+  * le client doit connaître l'adresse onion pour visiter le site
+  * l'adresse onion permet au client de savoir comme arriver aux I.P. choisis par le serveur
+  * le client décide d'un "point de rendez-vous" où le client et le serveur vont se retrouver pour discuter
+* le client et le serveur discutent en créant tous les deux un circuit tor
+
+Sans détails :
+* faire tourner un service classique
+  * un serveur web NGINX par exemple
+* install + conf tor
+* **le client peut visiter le service en `.onion` et il est garant d'un anonymat TRES fort et d'un chiffrement total de bout en bout**
+
+:fire: :fire: :fire: :fire:
+
+**Et tout ça sans qu'aucun des noeuds intermédiaires ne soit au courant de quoique ce soit. Si c'est pas trop stylé techniquement parlant, je sais pas ce que c'est.**
+
+---
+
+> Bon, on en parle du nom ? Je propose Lightweb plutôt. C'est moins marketing mais plus proche de la réalité.
