@@ -306,6 +306,24 @@ r4.tp6.b1# show ip route
 
 # ping google
 r4.tp6.b1# ping 8.8.8.8
+
+# à YNOV, on peut pas ping vers l'extérieur
+# donc on va faire un curl ?
+# sauf qu'il n'y a pas de curl ou ce genre d'outils sur un routeur Cisco donc on va faire une requête HTTP à la main
+r4.tp6.b1# conf t
+
+# Activation du lookup DNS
+r4.tp6.b1(config)# ip domain-lookup
+
+# Configuration du serveur DNS (celui de google)
+r4.tp6.b1(config)# ip name-server 8.8.8.8
+
+# Requête web vers un site full HTTP, avec résolution de nom
+r4.tp6.b1(config)# exit
+r4.tp6.b1# telnet trip-hop.net 80
+GET /
+
+# Vous devriez récup de l'HTML en masse
 ```
 * et configuration du NAT
 ```
