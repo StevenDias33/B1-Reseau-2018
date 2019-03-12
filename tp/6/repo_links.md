@@ -1,1 +1,2 @@
-boueix:https://github.com/hboueix/CCNA1-TPs/tree/master/TP6
+boueix,https://github.com/hboueix/CCNA1-TPs/tree/master/TP6
+Marques,https://github.com/MrGogo400/TP6-CCNA1
