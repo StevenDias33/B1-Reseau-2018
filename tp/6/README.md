@@ -464,7 +464,7 @@ Le DNS, c'est un service d'infra, alors c'est côté réseau des serveurs (`10.6
 
 ### Présentation
 
-Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Pour ça, on va mettre en palce un **serveur DNS**, qui sera chargé de :
+Le DNS va nous permettre d'arrêter de remplir nos fichiers `/etc/hosts` :| . Pour ça, on va mettre en place un **serveur DNS**, qui sera chargé de :
 * stocker toutes les infos liées aux noms de domaine de l'infra
   * quelles IP associée à quel nom de domaine
   * et réciproquement
@@ -524,8 +524,10 @@ ping client2.tp6.b1
 * on peut aussi demander à un routeur Cisco d'utiliser ce DNS, je vous laisse chercher les quelques commandes
 
 
-* reconfigurer le DHCP configuré précédemment pour distribuer aux clients l'adresse de leur nouveau serveur DNS :)
-
+* reconfigurer **le serveur DHCP** configuré précédemment pour distribuer aux clients l'adresse de leur nouveau serveur DNS :)
+  * ça se passe donc dans le fichier `dhcpd.conf`
+  * je vous laisse chercher un peu 
+  * **ne m'appelez pas pour que jé vérifie : testez-le !**
 ---
 
 ## 5. Serveur NTP
