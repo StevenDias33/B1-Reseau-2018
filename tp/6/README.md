@@ -484,6 +484,7 @@ sudo yum install -y bind*
 sudo nano /etc/named.conf
 
 # Edition des fichiers de zone (voir fichiers exemples dans ./dns/)
+" Les fichiers de zones contiennent les correspondances entre IP <> Nom de domaine
 sudo nano /var/named/forward.tp6.b1
 sudo nano /var/named/reverse.tp6.b1
 
@@ -500,6 +501,11 @@ sudo systemctl enable named
 ```
 
 Pour tester :
+* assurez vous d'avoir les bonnes IPs dans les fichiers de zone
+  * du genre, faites gaffe si vos clients ont changé d'IP à cause du DHCP... ;)
+  * dans un cas réel, le serveur DNS ne contient que les machines qui ont une IP fixe
+    * le nom, ça permet de joindre le serveur facilement, directement, (et de façon sécurisée par fois) un serveur donné
+    * un client n'héberge pas de service, donc inutile de le joindre depuis une autre machine (sauf cas particuliers)
 * depuis `server1.tp6.b1` lui-même, ou n'importe quelle machine Linux qui peut le joindre (les clients)
   * **APRES avoir vider le fichier /etc/hosts de ce que vous y aviez mis avant**
 ```
