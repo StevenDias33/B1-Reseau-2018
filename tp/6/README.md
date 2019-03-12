@@ -563,6 +563,15 @@ Dernier détail : sur CentOS, le service qui gère NTP s'appelle `chrony` :
 
 ### Mise en place
 
+Sur toutes les machines :
+* vérifier que chrony est présent, sinon, l'installer
+  * vérification : 
+    * `rpm -qa | grep chrony`
+      * s'il y a rien, faut l'installer
+      * s'il y a une ligne qui sort, vous êtes OK
+  * installation
+    * `sudo yum install -y chrony` (il faut un accès internet)
+
 Sur `server1.tp6.b1` : 
 * éditer le fichier `/etc/chrony.conf`
   * [un contenu modèle se trouve ici](./chrony/serveur/chrony.conf)
