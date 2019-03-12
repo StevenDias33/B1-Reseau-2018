@@ -600,6 +600,16 @@ Sur toutes les autres machines :
 # Aller plus loin
 
 Pistes pour aller plus loin (l'ordre n'est pas important), mp si vous voulez + d'infos :
+* Switch
+  * remplacer les switches pourris de GNS par des switch cisco et mettre en place des VLANs
+    * vous pouvez utilisez des IOU L2 pour ça, demandez moi pour + d'infos
+* Routeurs
+  * mettre en place une authentification MD5 pour OSPF
+  * densifier le backbone OSPF (= mettre + de routeurs) et gérer les métriques
+  * utiliser LACP pour agréger deux interfaces réseau 
+    * tolérance de panne (si un câble lâche, on est toujours bon)
+    * débit plus haut, nombre de connexions simultanées augmenté
+      * attention avec ça, c'est pas aussi bête que doubler le débit, nan nan. Mp pour + d'infos
 * Serveur Web
   * sécuriser le serveur Web avec le protocole TLS
     * et expliquer un peu la démarche
@@ -613,12 +623,3 @@ Pistes pour aller plus loin (l'ordre n'est pas important), mp si vous voulez + d
     * le serveur qu'on a là c'est un *master*
   * mettre en place une interface graphique pour gérer le DNS
     * parce que les fichiers de zone c'est quand même super chiant écrire/modifier
-* Switch
-  * remplacer les switches pourris de GNS par des switch cisco et mettre en place des VLANs
-    * vous pouvez utilisez des IOU L2 pour ça, demandez moi pour + d'infos
-* Routeurs
-  * mettre en place une authentification MD5 pour OSPF
-  * utiliser LACP pour agréger deux interfaces réseau 
-    * tolérance de panne (si un câble lâche, on est toujours bon)
-    * débit plus haut, nombre de connexions simultanées augmenté
-      * attention avec ça, c'est pas aussi bête que doubler le débit, nan nan. Mp pour + d'infos
